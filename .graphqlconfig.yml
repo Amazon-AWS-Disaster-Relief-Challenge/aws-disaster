@@ -1,0 +1,12 @@
+projects:
+  awsdisasterhackathon:
+    schemaPath: graphql/schema.json
+    includes:
+      - graphql/**/*.ts
+    excludes:
+      - ./amplify/**
+    extensions:
+      amplify:
+        codeGenTarget: typescript
+        generatedFileName: src/API.ts
+        docsFilePath: graphql

@@ -1,0 +1,20 @@
+{
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-awsdisasterhackathon-staging-181243-authRole",
+      "UnauthRoleArn": "arn:aws:iam::697045527014:role/amplify-awsdisasterhackathon-staging-181243-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::697045527014:role/amplify-awsdisasterhackathon-staging-181243-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-awsdisasterhackathon-staging-181243-deployment",
+      "UnauthRoleName": "amplify-awsdisasterhackathon-staging-181243-unauthRole",
+      "StackName": "amplify-awsdisasterhackathon-staging-181243",
+      "StackId": "arn:aws:cloudformation:us-east-1:697045527014:stack/amplify-awsdisasterhackathon-staging-181243/c27c31f0-6352-11ec-83b1-0a8b423584dd",
+      "AmplifyAppId": "d369j0ch7dkvz1"
+    },
+    "categories": {
+      "auth": {
+        "awsdisasterhackathon": {}
+      }
+    }
+  }
+}

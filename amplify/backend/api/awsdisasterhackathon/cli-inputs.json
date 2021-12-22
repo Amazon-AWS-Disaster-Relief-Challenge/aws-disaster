@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "serviceConfiguration": {
+    "apiName": "awsdisasterhackathon",
+    "serviceName": "AppSync",
+    "gqlSchemaPath": "/Users/mw/dev/aws-disaster/amplify/backend/api/awsdisasterhackathon/schema.graphql",
+    "defaultAuthType": {
+      "mode": "AMAZON_COGNITO_USER_POOLS",
+      "cognitoUserPoolId": "authawsdisasterhackathon"
+    },
+    "conflictResolution": {},
+    "additionalAuthTypes": []
+  }
+}
