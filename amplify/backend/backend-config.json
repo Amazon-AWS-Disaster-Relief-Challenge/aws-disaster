@@ -27,5 +27,19 @@
         ]
       }
     }
+  },
+  "function": {
+    "S3Trigger1bd2454f": {
+      "service": "Lambda",
+      "providerPlugin": "awscloudformation",
+      "build": true
+    }
+  },
+  "storage": {
+    "AwsHackContentStorage": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": []
+    }
   }
 }
