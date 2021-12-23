@@ -1,13 +1,12 @@
 import * as React from "react";
-import { createNativeStackNavigator } from "@react-navigation/native-stack";
-// import { NavigationContainer } from "@react-navigation/native";
-
-import config from "./src/aws-exports";
-import Amplify from "aws-amplify";
 // @ts-ignore
 import { withAuthenticator } from "aws-amplify-react-native";
 import { QueryClient, QueryClientProvider } from "react-query";
-import Route from "./src/navigation/Main";
+import { NavigationContainer } from "@react-navigation/native";
+import Amplify from "aws-amplify";
+
+import config from "./src/aws-exports";
+import Main from "./src/navigation/Main";
 
 Amplify.configure({
   ...config,
@@ -16,14 +15,14 @@ Amplify.configure({
   },
 });
 
-const queryClient = new QueryClient({
-  defaultOptions: { queries: { refetchInterval: false, staleTime: Infinity } },
-});
+const queryClient = new QueryClient();
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Route />
+      <NavigationContainer>
+        <Main />
+      </NavigationContainer>
     </QueryClientProvider>
   );
 }
