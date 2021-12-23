@@ -46,6 +46,10 @@ export function HomeScreen({ navigation }: ScreenProps) {
         title="Your Baby"
         onPress={() => navigation.navigate("NewPost")}
       />
+      <Button
+        title="Upload something!"
+        onPress={() => navigation.navigate("UploadVideo")}
+      />
       {data && (
         <>
           <FlatList

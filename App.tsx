@@ -4,8 +4,9 @@ import { NavigationContainer } from "@react-navigation/native";
 import { HomeScreen } from "./src/screens/HomeScreen";
 import { OtherScreen } from "./src/screens/OtherScreen";
 import NewPost from "./src/screens/NewPost";
-import config from "./src/aws-exports";
+import UploadVideo from "./src/screens/UploadVideo";
 import Amplify from "aws-amplify";
+import config from "./src/aws-exports";
 // @ts-ignore
 import { withAuthenticator } from "aws-amplify-react-native";
 import { QueryClient, QueryClientProvider } from "react-query";
@@ -29,6 +30,7 @@ function App() {
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Other" component={OtherScreen} />
           <Stack.Screen name="NewPost" component={NewPost} />
+          <Stack.Screen name="UploadVideo" component={UploadVideo} />
         </Stack.Navigator>
       </NavigationContainer>
     </QueryClientProvider>
