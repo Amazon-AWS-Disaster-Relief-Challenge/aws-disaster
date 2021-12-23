@@ -2,13 +2,84 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const getPost = /* GraphQL */ `
+  query GetPost($id: ID!) {
+    getPost(id: $id) {
+      id
+      title
+      type
+      author
+      likes
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const listPosts = /* GraphQL */ `
+  query ListPosts(
+    $filter: ModelPostFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listPosts(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        title
+        type
+        author
+        likes
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncPosts = /* GraphQL */ `
+  query SyncPosts(
+    $filter: ModelPostFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncPosts(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        title
+        type
+        author
+        likes
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
 export const getIncident = /* GraphQL */ `
   query GetIncident($id: ID!) {
     getIncident(id: $id) {
       id
       title
-      createAt
-      lastModified
+      longitude
+      latitude
+      type
       createdAt
       updatedAt
       _version
@@ -27,8 +98,9 @@ export const listIncidents = /* GraphQL */ `
       items {
         id
         title
-        createAt
-        lastModified
+        longitude
+        latitude
+        type
         createdAt
         updatedAt
         _version
@@ -56,8 +128,9 @@ export const syncIncidents = /* GraphQL */ `
       items {
         id
         title
-        createAt
-        lastModified
+        longitude
+        latitude
+        type
         createdAt
         updatedAt
         _version

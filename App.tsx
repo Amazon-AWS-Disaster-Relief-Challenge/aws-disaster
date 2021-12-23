@@ -5,6 +5,7 @@ import { HomeScreen } from "./screens/HomeScreen";
 import { OtherScreen } from "./screens/OtherScreen";
 import Amplify from "aws-amplify";
 import config from "./src/aws-exports";
+// @ts-ignore
 import { withAuthenticator } from "aws-amplify-react-native";
 
 Amplify.configure({
@@ -26,4 +27,5 @@ function App() {
     </NavigationContainer>
   );
 }
+
 export default withAuthenticator(App);

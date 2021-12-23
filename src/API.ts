@@ -2,21 +2,31 @@
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 
-export type CreateIncidentInput = {
+export type CreatePostInput = {
   id?: string | null,
   title?: string | null,
-  createAt?: number | null,
-  lastModified?: number | null,
+  type?: PostType | null,
+  author?: string | null,
+  likes?: number | null,
   _version?: number | null,
 };
 
-export type ModelIncidentConditionInput = {
+export enum PostType {
+  TEXT = "TEXT",
+  PHOTO = "PHOTO",
+  VIDEO = "VIDEO",
+  AUDIO = "AUDIO",
+}
+
+
+export type ModelPostConditionInput = {
   title?: ModelStringInput | null,
-  createAt?: ModelIntInput | null,
-  lastModified?: ModelIntInput | null,
-  and?: Array< ModelIncidentConditionInput | null > | null,
-  or?: Array< ModelIncidentConditionInput | null > | null,
-  not?: ModelIncidentConditionInput | null,
+  type?: ModelPostTypeInput | null,
+  author?: ModelStringInput | null,
+  likes?: ModelIntInput | null,
+  and?: Array< ModelPostConditionInput | null > | null,
+  or?: Array< ModelPostConditionInput | null > | null,
+  not?: ModelPostConditionInput | null,
 };
 
 export type ModelStringInput = {
@@ -59,6 +69,11 @@ export type ModelSizeInput = {
   between?: Array< number | null > | null,
 };
 
+export type ModelPostTypeInput = {
+  eq?: PostType | null,
+  ne?: PostType | null,
+};
+
 export type ModelIntInput = {
   ne?: number | null,
   eq?: number | null,
@@ -71,12 +86,74 @@ export type ModelIntInput = {
   attributeType?: ModelAttributeTypes | null,
 };
 
+export type Post = {
+  __typename: "Post",
+  id: string,
+  title?: string | null,
+  type?: PostType | null,
+  author?: string | null,
+  likes?: number | null,
+  createdAt: string,
+  updatedAt: string,
+  _version: number,
+  _deleted?: boolean | null,
+  _lastChangedAt: number,
+};
+
+export type UpdatePostInput = {
+  id: string,
+  title?: string | null,
+  type?: PostType | null,
+  author?: string | null,
+  likes?: number | null,
+  _version?: number | null,
+};
+
+export type DeletePostInput = {
+  id: string,
+  _version?: number | null,
+};
+
+export type CreateIncidentInput = {
+  id?: string | null,
+  title?: string | null,
+  longitude?: string | null,
+  latitude?: string | null,
+  type?: IncidentType | null,
+  _version?: number | null,
+};
+
+export enum IncidentType {
+  FIRE = "FIRE",
+  EARTHQUAKE = "EARTHQUAKE",
+  FLOOD = "FLOOD",
+  TORNADO = "TORNADO",
+  HURRICANE = "HURRICANE",
+}
+
+
+export type ModelIncidentConditionInput = {
+  title?: ModelStringInput | null,
+  longitude?: ModelStringInput | null,
+  latitude?: ModelStringInput | null,
+  type?: ModelIncidentTypeInput | null,
+  and?: Array< ModelIncidentConditionInput | null > | null,
+  or?: Array< ModelIncidentConditionInput | null > | null,
+  not?: ModelIncidentConditionInput | null,
+};
+
+export type ModelIncidentTypeInput = {
+  eq?: IncidentType | null,
+  ne?: IncidentType | null,
+};
+
 export type Incident = {
   __typename: "Incident",
   id: string,
   title?: string | null,
-  createAt?: number | null,
-  lastModified?: number | null,
+  longitude?: string | null,
+  latitude?: string | null,
+  type?: IncidentType | null,
   createdAt: string,
   updatedAt: string,
   _version: number,
@@ -87,8 +164,9 @@ export type Incident = {
 export type UpdateIncidentInput = {
   id: string,
   title?: string | null,
-  createAt?: number | null,
-  lastModified?: number | null,
+  longitude?: string | null,
+  latitude?: string | null,
+  type?: IncidentType | null,
   _version?: number | null,
 };
 
@@ -97,14 +175,15 @@ export type DeleteIncidentInput = {
   _version?: number | null,
 };
 
-export type ModelIncidentFilterInput = {
+export type ModelPostFilterInput = {
   id?: ModelIDInput | null,
   title?: ModelStringInput | null,
-  createAt?: ModelIntInput | null,
-  lastModified?: ModelIntInput | null,
-  and?: Array< ModelIncidentFilterInput | null > | null,
-  or?: Array< ModelIncidentFilterInput | null > | null,
-  not?: ModelIncidentFilterInput | null,
+  type?: ModelPostTypeInput | null,
+  author?: ModelStringInput | null,
+  likes?: ModelIntInput | null,
+  and?: Array< ModelPostFilterInput | null > | null,
+  or?: Array< ModelPostFilterInput | null > | null,
+  not?: ModelPostFilterInput | null,
 };
 
 export type ModelIDInput = {
@@ -123,11 +202,92 @@ export type ModelIDInput = {
   size?: ModelSizeInput | null,
 };
 
+export type ModelPostConnection = {
+  __typename: "ModelPostConnection",
+  items:  Array<Post | null >,
+  nextToken?: string | null,
+  startedAt?: number | null,
+};
+
+export type ModelIncidentFilterInput = {
+  id?: ModelIDInput | null,
+  title?: ModelStringInput | null,
+  longitude?: ModelStringInput | null,
+  latitude?: ModelStringInput | null,
+  type?: ModelIncidentTypeInput | null,
+  and?: Array< ModelIncidentFilterInput | null > | null,
+  or?: Array< ModelIncidentFilterInput | null > | null,
+  not?: ModelIncidentFilterInput | null,
+};
+
 export type ModelIncidentConnection = {
   __typename: "ModelIncidentConnection",
   items:  Array<Incident | null >,
   nextToken?: string | null,
   startedAt?: number | null,
+};
+
+export type CreatePostMutationVariables = {
+  input: CreatePostInput,
+  condition?: ModelPostConditionInput | null,
+};
+
+export type CreatePostMutation = {
+  createPost?:  {
+    __typename: "Post",
+    id: string,
+    title?: string | null,
+    type?: PostType | null,
+    author?: string | null,
+    likes?: number | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
+};
+
+export type UpdatePostMutationVariables = {
+  input: UpdatePostInput,
+  condition?: ModelPostConditionInput | null,
+};
+
+export type UpdatePostMutation = {
+  updatePost?:  {
+    __typename: "Post",
+    id: string,
+    title?: string | null,
+    type?: PostType | null,
+    author?: string | null,
+    likes?: number | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
+};
+
+export type DeletePostMutationVariables = {
+  input: DeletePostInput,
+  condition?: ModelPostConditionInput | null,
+};
+
+export type DeletePostMutation = {
+  deletePost?:  {
+    __typename: "Post",
+    id: string,
+    title?: string | null,
+    type?: PostType | null,
+    author?: string | null,
+    likes?: number | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
 };
 
 export type CreateIncidentMutationVariables = {
@@ -140,8 +300,9 @@ export type CreateIncidentMutation = {
     __typename: "Incident",
     id: string,
     title?: string | null,
-    createAt?: number | null,
-    lastModified?: number | null,
+    longitude?: string | null,
+    latitude?: string | null,
+    type?: IncidentType | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -160,8 +321,9 @@ export type UpdateIncidentMutation = {
     __typename: "Incident",
     id: string,
     title?: string | null,
-    createAt?: number | null,
-    lastModified?: number | null,
+    longitude?: string | null,
+    latitude?: string | null,
+    type?: IncidentType | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -180,13 +342,89 @@ export type DeleteIncidentMutation = {
     __typename: "Incident",
     id: string,
     title?: string | null,
-    createAt?: number | null,
-    lastModified?: number | null,
+    longitude?: string | null,
+    latitude?: string | null,
+    type?: IncidentType | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
     _deleted?: boolean | null,
     _lastChangedAt: number,
+  } | null,
+};
+
+export type GetPostQueryVariables = {
+  id: string,
+};
+
+export type GetPostQuery = {
+  getPost?:  {
+    __typename: "Post",
+    id: string,
+    title?: string | null,
+    type?: PostType | null,
+    author?: string | null,
+    likes?: number | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
+};
+
+export type ListPostsQueryVariables = {
+  filter?: ModelPostFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListPostsQuery = {
+  listPosts?:  {
+    __typename: "ModelPostConnection",
+    items:  Array< {
+      __typename: "Post",
+      id: string,
+      title?: string | null,
+      type?: PostType | null,
+      author?: string | null,
+      likes?: number | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+    } | null >,
+    nextToken?: string | null,
+    startedAt?: number | null,
+  } | null,
+};
+
+export type SyncPostsQueryVariables = {
+  filter?: ModelPostFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+  lastSync?: number | null,
+};
+
+export type SyncPostsQuery = {
+  syncPosts?:  {
+    __typename: "ModelPostConnection",
+    items:  Array< {
+      __typename: "Post",
+      id: string,
+      title?: string | null,
+      type?: PostType | null,
+      author?: string | null,
+      likes?: number | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+    } | null >,
+    nextToken?: string | null,
+    startedAt?: number | null,
   } | null,
 };
 
@@ -199,8 +437,9 @@ export type GetIncidentQuery = {
     __typename: "Incident",
     id: string,
     title?: string | null,
-    createAt?: number | null,
-    lastModified?: number | null,
+    longitude?: string | null,
+    latitude?: string | null,
+    type?: IncidentType | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -222,8 +461,9 @@ export type ListIncidentsQuery = {
       __typename: "Incident",
       id: string,
       title?: string | null,
-      createAt?: number | null,
-      lastModified?: number | null,
+      longitude?: string | null,
+      latitude?: string | null,
+      type?: IncidentType | null,
       createdAt: string,
       updatedAt: string,
       _version: number,
@@ -249,8 +489,9 @@ export type SyncIncidentsQuery = {
       __typename: "Incident",
       id: string,
       title?: string | null,
-      createAt?: number | null,
-      lastModified?: number | null,
+      longitude?: string | null,
+      latitude?: string | null,
+      type?: IncidentType | null,
       createdAt: string,
       updatedAt: string,
       _version: number,
@@ -262,13 +503,62 @@ export type SyncIncidentsQuery = {
   } | null,
 };
 
+export type OnCreatePostSubscription = {
+  onCreatePost?:  {
+    __typename: "Post",
+    id: string,
+    title?: string | null,
+    type?: PostType | null,
+    author?: string | null,
+    likes?: number | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
+};
+
+export type OnUpdatePostSubscription = {
+  onUpdatePost?:  {
+    __typename: "Post",
+    id: string,
+    title?: string | null,
+    type?: PostType | null,
+    author?: string | null,
+    likes?: number | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
+};
+
+export type OnDeletePostSubscription = {
+  onDeletePost?:  {
+    __typename: "Post",
+    id: string,
+    title?: string | null,
+    type?: PostType | null,
+    author?: string | null,
+    likes?: number | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
+};
+
 export type OnCreateIncidentSubscription = {
   onCreateIncident?:  {
     __typename: "Incident",
     id: string,
     title?: string | null,
-    createAt?: number | null,
-    lastModified?: number | null,
+    longitude?: string | null,
+    latitude?: string | null,
+    type?: IncidentType | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -282,8 +572,9 @@ export type OnUpdateIncidentSubscription = {
     __typename: "Incident",
     id: string,
     title?: string | null,
-    createAt?: number | null,
-    lastModified?: number | null,
+    longitude?: string | null,
+    latitude?: string | null,
+    type?: IncidentType | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -297,8 +588,9 @@ export type OnDeleteIncidentSubscription = {
     __typename: "Incident",
     id: string,
     title?: string | null,
-    createAt?: number | null,
-    lastModified?: number | null,
+    longitude?: string | null,
+    latitude?: string | null,
+    type?: IncidentType | null,
     createdAt: string,
     updatedAt: string,
     _version: number,

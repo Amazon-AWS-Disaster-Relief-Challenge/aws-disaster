@@ -3,7 +3,7 @@ import { Button, View } from "react-native";
 import { Video } from "expo-av";
 import VideoPlayer from "expo-video-player";
 
-export function OtherScreen({ navigation }) {
+export function OtherScreen({ navigation }: ScreenProps) {
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       {/* <Text>OtherScreen Screen</Text> */}
