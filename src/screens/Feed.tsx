@@ -21,7 +21,7 @@ const Item = ({ id, title, type }: any) => (
   </View>
 );
 
-export function Feed({ navigation, route }: ScreenProps) {
+export default function Feed({ navigation, route }: ScreenProps) {
   console.log("route", route);
 
   const { data } = useQuery("incidents", async () =>
