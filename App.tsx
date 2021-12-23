@@ -1,21 +1,48 @@
 import * as React from "react";
-// import { StatusBar } from "expo-status-bar";
+
 import { withAuthenticator } from "aws-amplify-react-native";
 import { Button, StyleSheet, Text, View } from "react-native";
-// import Amplify from "aws-amplify";
+
 import config from "./src/aws-exports";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-Amplify.configure(config);
 import { Video } from "expo-av";
 import VideoPlayer from "expo-video-player";
 import Amplify from "aws-amplify";
+import { API, graphqlOperation } from "aws-amplify";
+import { listIncidents } from "./src/graphql/queries";
+
+Amplify.configure({
+  ...config,
+  Analytics: {
+    disabled: true,
+  },
+});
 
 function HomeScreen({ navigation }) {
+  const [data, setData] = React.useState([]);
+
+  React.useEffect(() => {
+    const getData = async () => {
+      try {
+        const result = await API.graphql(
+          graphqlOperation(listIncidents, {
+            limit: 10,
+          })
+        );
+
+        setData(result.data.listIncidents.items);
+      } catch (err) {
+        console.log("error fetching data", err);
+      }
+    };
+    getData();
+  }, []);
+
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
-      <Text>Home Screen</Text>
+      <Text>{data ? data.length : "none"}</Text>
       <Button
         title="Go to Other"
         onPress={() => navigation.navigate("Other")}

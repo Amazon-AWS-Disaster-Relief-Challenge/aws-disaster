@@ -1,0 +1,7 @@
+type Incident @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  title: String
+  createAt: AWSTimestamp
+  lastModified: AWSTimestamp
+}
+ 
