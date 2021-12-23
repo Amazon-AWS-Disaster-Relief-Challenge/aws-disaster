@@ -60,5 +60,12 @@
         }
       }
     }
+  },
+  "storage": {
+    "s3awsdisasters31": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": []
+    }
   }
 }

@@ -4,8 +4,8 @@ import { NavigationContainer } from "@react-navigation/native";
 import { HomeScreen } from "./src/screens/HomeScreen";
 import { OtherScreen } from "./src/screens/OtherScreen";
 import NewPost from "./src/screens/NewPost";
-import Amplify from "aws-amplify";
 import config from "./src/aws-exports";
+import Amplify from "aws-amplify";
 // @ts-ignore
 import { withAuthenticator } from "aws-amplify-react-native";
 import { QueryClient, QueryClientProvider } from "react-query";

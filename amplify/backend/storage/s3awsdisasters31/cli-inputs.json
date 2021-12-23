@@ -1,0 +1,16 @@
+{
+  "resourceName": "s3awsdisasters31",
+  "bucketName": "awsdisaster-s3-1",
+  "policyUUID": "45b3eec2",
+  "storageAccess": "authAndGuest",
+  "guestAccess": [
+    "DELETE",
+    "READ",
+    "CREATE_AND_UPDATE"
+  ],
+  "authAccess": [
+    "DELETE",
+    "READ",
+    "CREATE_AND_UPDATE"
+  ]
+}
