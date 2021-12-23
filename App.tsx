@@ -1,15 +1,16 @@
 import * as React from "react";
 // import { StatusBar } from "expo-status-bar";
-// import { withAuthenticator } from "aws-amplify-react-native";
+import { withAuthenticator } from "aws-amplify-react-native";
 import { Button, StyleSheet, Text, View } from "react-native";
 // import Amplify from "aws-amplify";
-// import config from "./aws-exports";
+import config from "./src/aws-exports";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-// Amplify.configure(config);
+Amplify.configure(config);
 import { Video } from "expo-av";
 import VideoPlayer from "expo-video-player";
+import Amplify from "aws-amplify";
 
 function HomeScreen({ navigation }) {
   return (
@@ -65,7 +66,7 @@ function App() {
     </NavigationContainer>
   );
 }
-export default App;
+export default withAuthenticator(App);
 
 const styles = StyleSheet.create({
   container: {
