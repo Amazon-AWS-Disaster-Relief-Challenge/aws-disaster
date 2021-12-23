@@ -32,7 +32,14 @@
     "categories": {
       "auth": {
         "awsdisaster": {},
-        "awsdisaster4ddd7f5c": {}
+        "awsdisaster4ddd7f5c": {},
+        "true": {}
+      },
+      "function": {
+        "S3Trigger1bd2454f": {
+          "deploymentBucketName": "amplify-awsdisaster-dev-71845-deployment",
+          "s3Key": "amplify-builds/S3Trigger1bd2454f-674736646b5431477869-build.zip"
+        }
       }
     }
   }
