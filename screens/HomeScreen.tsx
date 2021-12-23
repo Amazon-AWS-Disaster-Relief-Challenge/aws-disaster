@@ -10,21 +10,7 @@ import {
 import { API, graphqlOperation } from "aws-amplify";
 import { listIncidents } from "../src/graphql/queries";
 import tailwind from "tailwind-rn";
-
-const DATA = [
-  {
-    id: "bd7acbea-c1b1-46c2-aed5-3ad53abb28ba",
-    title: "First Item",
-  },
-  {
-    id: "3ac68afc-c605-48d3-a4f8-fbd91aa97f63",
-    title: "Second Item",
-  },
-  {
-    id: "58694a0f-3da1-471f-bd96-145571e29d72",
-    title: "Third Item",
-  },
-];
+import { useQuery } from "react-query";
 
 const Item = ({ id, title, type }: any) => (
   <View style={tailwind("w-full mt-2 p-5 mb-2 border-b")}>
@@ -35,24 +21,13 @@ const Item = ({ id, title, type }: any) => (
 );
 
 export function HomeScreen({ navigation }: ScreenProps) {
-  const [data, setData] = React.useState([]);
-
-  React.useEffect(() => {
-    const getData = async () => {
-      try {
-        const result = await API.graphql(
-          graphqlOperation(listIncidents, {
-            limit: 10,
-          })
-        );
-
-        setData(result.data.listIncidents.items);
-      } catch (err) {
-        console.log("error fetching data", err);
-      }
-    };
-    getData();
-  }, []);
+  const { data } = useQuery("incidents", async () =>
+    API.graphql(
+      graphqlOperation(listIncidents, {
+        limit: 10,
+      })
+    )
+  );
 
   const renderItem = ({ item }: any) => <Item title={item.title} />;
 
@@ -71,19 +46,24 @@ export function HomeScreen({ navigation }: ScreenProps) {
         title="Your Baby"
         onPress={() => navigation.navigate("NewPost")}
       />
-      <FlatList
-        data={data}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id}
-        style={tailwind("w-full px-4 bg-white h-full z-0")}
-      />
-      <View style={{ zIndex: 1, position: "absolute", bottom: 0 }}>
-        <Text>{data ? data.length : "none"}</Text>
-        <Button
-          title="Go to Other"
-          onPress={() => navigation.navigate("Other")}
-        />
-      </View>
+      {data && (
+        <>
+          <FlatList
+            data={data.data.listIncidents.items}
+            renderItem={renderItem}
+            keyExtractor={(item) => item.id}
+            style={tailwind("w-full px-4 bg-white h-full z-0")}
+          />
+
+          <View style={{ zIndex: 1, position: "absolute", bottom: 0 }}>
+            <Text>{data ? data.length : "none"}</Text>
+            <Button
+              title="Go to Other"
+              onPress={() => navigation.navigate("Other")}
+            />
+          </View>
+        </>
+      )}
     </View>
   );
 }
