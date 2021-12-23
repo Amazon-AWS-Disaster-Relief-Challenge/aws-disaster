@@ -3,7 +3,9 @@ import { useForm, Controller } from "react-hook-form";
 import { Button, Text, TextInput, View } from "react-native";
 import tailwind from "tailwind-rn";
 
-export default function HomeScreen({ navigation }: ScreenProps) {
+// const
+
+export default function NewPost({ navigation }: ScreenProps) {
   const {
     control,
     handleSubmit,
@@ -14,7 +16,7 @@ export default function HomeScreen({ navigation }: ScreenProps) {
       lastName: "",
     },
   });
-  const onSubmit = (data: any) => console.log(data);
+  // const { data, error} = use
 
   return (
     <View style={tailwind("p-5")}>
