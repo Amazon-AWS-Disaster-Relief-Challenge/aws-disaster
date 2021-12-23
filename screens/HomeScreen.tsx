@@ -67,6 +67,10 @@ export function HomeScreen({ navigation }: ScreenProps) {
         height: "100%",
       }}
     >
+      <Button
+        title="Your Baby"
+        onPress={() => navigation.navigate("NewPost")}
+      />
       <FlatList
         data={data}
         renderItem={renderItem}
