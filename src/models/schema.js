@@ -40,6 +40,15 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "status": {
+                    "name": "status",
+                    "isArray": false,
+                    "type": {
+                        "enum": "PostStatus"
+                    },
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -175,6 +184,14 @@ export const schema = {
                 "AUDIO"
             ]
         },
+        "PostStatus": {
+            "name": "PostStatus",
+            "values": [
+                "DRAFT",
+                "PUBLISHED",
+                "REMOVED"
+            ]
+        },
         "IncidentType": {
             "name": "IncidentType",
             "values": [
@@ -187,5 +204,5 @@ export const schema = {
         }
     },
     "nonModels": {},
-    "version": "b9ecf380537171a517f7d741d3886dbc"
+    "version": "6c5951238345543b8b30b506cb85a758"
 };

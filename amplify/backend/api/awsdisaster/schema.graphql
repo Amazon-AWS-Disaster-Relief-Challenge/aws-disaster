@@ -5,12 +5,19 @@ enum PostType {
   AUDIO
 }
 
-type Post @model @auth(rules: [{allow: public}]) {
+enum PostStatus {
+  DRAFT
+  PUBLISHED
+  REMOVED
+}
+
+type Post @model @auth(rules: [{ allow: public }]) {
   id: ID!
   title: String
   type: PostType
   author: String
   likes: Int
+  status: PostStatus
 }
 
 enum IncidentType {
@@ -21,11 +28,10 @@ enum IncidentType {
   HURRICANE
 }
 
-type Incident @model @auth(rules: [{allow: public}]) {
+type Incident @model @auth(rules: [{ allow: public }]) {
   id: ID!
   title: String
   longitude: String
   latitude: String
   type: IncidentType
 }
- 

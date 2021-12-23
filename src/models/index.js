@@ -9,6 +9,12 @@ const PostType = {
   "AUDIO": "AUDIO"
 };
 
+const PostStatus = {
+  "DRAFT": "DRAFT",
+  "PUBLISHED": "PUBLISHED",
+  "REMOVED": "REMOVED"
+};
+
 const IncidentType = {
   "FIRE": "FIRE",
   "EARTHQUAKE": "EARTHQUAKE",
@@ -23,5 +29,6 @@ export {
   Post,
   Incident,
   PostType,
+  PostStatus,
   IncidentType
 };

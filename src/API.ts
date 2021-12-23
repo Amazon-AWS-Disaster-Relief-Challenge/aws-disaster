@@ -8,6 +8,7 @@ export type CreatePostInput = {
   type?: PostType | null,
   author?: string | null,
   likes?: number | null,
+  status?: PostStatus | null,
   _version?: number | null,
 };
 
@@ -19,11 +20,19 @@ export enum PostType {
 }
 
 
+export enum PostStatus {
+  DRAFT = "DRAFT",
+  PUBLISHED = "PUBLISHED",
+  REMOVED = "REMOVED",
+}
+
+
 export type ModelPostConditionInput = {
   title?: ModelStringInput | null,
   type?: ModelPostTypeInput | null,
   author?: ModelStringInput | null,
   likes?: ModelIntInput | null,
+  status?: ModelPostStatusInput | null,
   and?: Array< ModelPostConditionInput | null > | null,
   or?: Array< ModelPostConditionInput | null > | null,
   not?: ModelPostConditionInput | null,
@@ -86,6 +95,11 @@ export type ModelIntInput = {
   attributeType?: ModelAttributeTypes | null,
 };
 
+export type ModelPostStatusInput = {
+  eq?: PostStatus | null,
+  ne?: PostStatus | null,
+};
+
 export type Post = {
   __typename: "Post",
   id: string,
@@ -93,6 +107,7 @@ export type Post = {
   type?: PostType | null,
   author?: string | null,
   likes?: number | null,
+  status?: PostStatus | null,
   createdAt: string,
   updatedAt: string,
   _version: number,
@@ -106,6 +121,7 @@ export type UpdatePostInput = {
   type?: PostType | null,
   author?: string | null,
   likes?: number | null,
+  status?: PostStatus | null,
   _version?: number | null,
 };
 
@@ -181,6 +197,7 @@ export type ModelPostFilterInput = {
   type?: ModelPostTypeInput | null,
   author?: ModelStringInput | null,
   likes?: ModelIntInput | null,
+  status?: ModelPostStatusInput | null,
   and?: Array< ModelPostFilterInput | null > | null,
   or?: Array< ModelPostFilterInput | null > | null,
   not?: ModelPostFilterInput | null,
@@ -240,6 +257,7 @@ export type CreatePostMutation = {
     type?: PostType | null,
     author?: string | null,
     likes?: number | null,
+    status?: PostStatus | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -261,6 +279,7 @@ export type UpdatePostMutation = {
     type?: PostType | null,
     author?: string | null,
     likes?: number | null,
+    status?: PostStatus | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -282,6 +301,7 @@ export type DeletePostMutation = {
     type?: PostType | null,
     author?: string | null,
     likes?: number | null,
+    status?: PostStatus | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -365,6 +385,7 @@ export type GetPostQuery = {
     type?: PostType | null,
     author?: string | null,
     likes?: number | null,
+    status?: PostStatus | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -389,6 +410,7 @@ export type ListPostsQuery = {
       type?: PostType | null,
       author?: string | null,
       likes?: number | null,
+      status?: PostStatus | null,
       createdAt: string,
       updatedAt: string,
       _version: number,
@@ -417,6 +439,7 @@ export type SyncPostsQuery = {
       type?: PostType | null,
       author?: string | null,
       likes?: number | null,
+      status?: PostStatus | null,
       createdAt: string,
       updatedAt: string,
       _version: number,
@@ -511,6 +534,7 @@ export type OnCreatePostSubscription = {
     type?: PostType | null,
     author?: string | null,
     likes?: number | null,
+    status?: PostStatus | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -527,6 +551,7 @@ export type OnUpdatePostSubscription = {
     type?: PostType | null,
     author?: string | null,
     likes?: number | null,
+    status?: PostStatus | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -543,6 +568,7 @@ export type OnDeletePostSubscription = {
     type?: PostType | null,
     author?: string | null,
     likes?: number | null,
+    status?: PostStatus | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
