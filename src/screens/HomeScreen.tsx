@@ -8,7 +8,7 @@ import {
   View,
 } from "react-native";
 import { API, graphqlOperation } from "aws-amplify";
-import { listIncidents } from "../src/graphql/queries";
+import { listIncidents } from "../graphql/queries";
 import tailwind from "tailwind-rn";
 import { useQuery } from "react-query";
 
@@ -45,6 +45,10 @@ export function HomeScreen({ navigation }: ScreenProps) {
       <Button
         title="Your Baby"
         onPress={() => navigation.navigate("NewPost")}
+      />
+      <Button
+        title="Upload something!"
+        onPress={() => navigation.navigate("UploadVideo")}
       />
       {data && (
         <>

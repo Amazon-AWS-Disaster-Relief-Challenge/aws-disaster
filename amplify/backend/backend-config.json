@@ -27,5 +27,52 @@
         ]
       }
     }
+  },
+  "function": {
+    "S3Trigger1bd2454f": {
+      "service": "Lambda",
+      "providerPlugin": "awscloudformation",
+<<<<<<< HEAD
+      "output": {
+        "authConfig": {
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 30,
+              "apiKeyExpirationDate": "2022-01-22T05:55:01.323Z",
+              "description": "api key description"
+            }
+          },
+          "additionalAuthenticationProviders": [
+            {
+              "authenticationType": "AWS_IAM"
+            },
+            {
+              "authenticationType": "AMAZON_COGNITO_USER_POOLS",
+              "userPoolConfig": {
+                "userPoolId": "authawsdisaster"
+              }
+            }
+          ]
+        }
+      }
+=======
+      "build": true
+    }
+  },
+  "storage": {
+    "AwsHackContentStorage": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": []
+>>>>>>> main
+    }
+  },
+  "storage": {
+    "s3awsdisasters31": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": []
+    }
   }
 }

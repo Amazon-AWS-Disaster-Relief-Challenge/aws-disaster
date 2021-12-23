@@ -1,0 +1,12 @@
+diff --git a/node_modules/expo-asset/build/PlatformUtils.web.js b/node_modules/expo-asset/build/PlatformUtils.web.js
+index 60915a6..7f99254 100644
+--- a/node_modules/expo-asset/build/PlatformUtils.web.js
++++ b/node_modules/expo-asset/build/PlatformUtils.web.js
+@@ -9,4 +9,7 @@ export async function downloadAsync(uri, hash, type, name) {
+ export function getManifest() {
+     return {};
+ }
++export function getManifest2() {
++    return {};
++}
+ //# sourceMappingURL=PlatformUtils.web.js.map

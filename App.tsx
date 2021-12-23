@@ -1,9 +1,10 @@
 import * as React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { NavigationContainer } from "@react-navigation/native";
-import { HomeScreen } from "./screens/HomeScreen";
-import { OtherScreen } from "./screens/OtherScreen";
-import NewPost from "./screens/NewPost";
+import { HomeScreen } from "./src/screens/HomeScreen";
+import { OtherScreen } from "./src/screens/OtherScreen";
+import NewPost from "./src/screens/NewPost";
+import UploadVideo from "./src/screens/UploadVideo";
 import Amplify from "aws-amplify";
 import config from "./src/aws-exports";
 // @ts-ignore
@@ -16,6 +17,7 @@ Amplify.configure({
     disabled: true,
   },
 });
+
 const queryClient = new QueryClient();
 
 const Stack = createNativeStackNavigator();
@@ -28,6 +30,7 @@ function App() {
           <Stack.Screen name="Home" component={HomeScreen} />
           <Stack.Screen name="Other" component={OtherScreen} />
           <Stack.Screen name="NewPost" component={NewPost} />
+          <Stack.Screen name="UploadVideo" component={UploadVideo} />
         </Stack.Navigator>
       </NavigationContainer>
     </QueryClientProvider>

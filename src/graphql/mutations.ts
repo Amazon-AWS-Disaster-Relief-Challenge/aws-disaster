@@ -13,6 +13,7 @@ export const createPost = /* GraphQL */ `
       type
       author
       likes
+      status
       createdAt
       updatedAt
       _version
@@ -32,6 +33,7 @@ export const updatePost = /* GraphQL */ `
       type
       author
       likes
+      status
       createdAt
       updatedAt
       _version
@@ -51,6 +53,7 @@ export const deletePost = /* GraphQL */ `
       type
       author
       likes
+      status
       createdAt
       updatedAt
       _version

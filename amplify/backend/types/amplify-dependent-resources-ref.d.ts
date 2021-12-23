@@ -9,5 +9,17 @@ export type AmplifyDependentResourcesAttributes = {
             "AppClientIDWeb": "string",
             "AppClientID": "string"
         }
+    },
+    "storage": {
+        "AwsHackContentStorage": {
+            "BucketName": "string",
+            "Region": "string"
+        }
+    },
+    "storage": {
+        "s3awsdisasters31": {
+            "BucketName": "string",
+            "Region": "string"
+        }
     }
 }

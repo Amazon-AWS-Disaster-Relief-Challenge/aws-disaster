@@ -10,6 +10,7 @@ export const getPost = /* GraphQL */ `
       type
       author
       likes
+      status
       createdAt
       updatedAt
       _version
@@ -31,6 +32,7 @@ export const listPosts = /* GraphQL */ `
         type
         author
         likes
+        status
         createdAt
         updatedAt
         _version
@@ -61,6 +63,7 @@ export const syncPosts = /* GraphQL */ `
         type
         author
         likes
+        status
         createdAt
         updatedAt
         _version

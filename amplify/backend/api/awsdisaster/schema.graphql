@@ -1,0 +1,37 @@
+enum PostType {
+  TEXT
+  PHOTO
+  VIDEO
+  AUDIO
+}
+
+enum PostStatus {
+  DRAFT
+  PUBLISHED
+  REMOVED
+}
+
+type Post @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  title: String
+  type: PostType
+  author: String
+  likes: Int
+  status: PostStatus
+}
+
+enum IncidentType {
+  FIRE
+  EARTHQUAKE
+  FLOOD
+  TORNADO
+  HURRICANE
+}
+
+type Incident @model @auth(rules: [{ allow: public }]) {
+  id: ID!
+  title: String
+  longitude: String
+  latitude: String
+  type: IncidentType
+}

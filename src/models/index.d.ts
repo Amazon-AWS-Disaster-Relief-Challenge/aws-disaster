@@ -7,6 +7,12 @@ export enum PostType {
   AUDIO = "AUDIO"
 }
 
+export enum PostStatus {
+  DRAFT = "DRAFT",
+  PUBLISHED = "PUBLISHED",
+  REMOVED = "REMOVED"
+}
+
 export enum IncidentType {
   FIRE = "FIRE",
   EARTHQUAKE = "EARTHQUAKE",
@@ -31,6 +37,7 @@ export declare class Post {
   readonly type?: PostType | keyof typeof PostType;
   readonly author?: string;
   readonly likes?: number;
+  readonly status?: PostStatus | keyof typeof PostStatus;
   readonly createdAt?: string;
   readonly updatedAt?: string;
   constructor(init: ModelInit<Post, PostMetaData>);
