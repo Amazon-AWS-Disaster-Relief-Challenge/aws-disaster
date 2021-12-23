@@ -2,7 +2,7 @@ import * as React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 // import { NavigationContainer } from "@react-navigation/native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { HomeScreen } from "./src/screens/HomeScreen";
+import { Feed } from "./src/screens/Feed";
 import { OtherScreen } from "./src/screens/OtherScreen";
 import NewPost from "./src/screens/NewPost";
 import config from "./src/aws-exports";
@@ -27,8 +27,8 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <NavigationContainer>
-        <Tab.Navigator>
-          <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Navigator screenOptions={{ headerShown: false }}>
+          <Tab.Screen name="Home" component={Feed} />
           <Tab.Screen name="Other" component={OtherScreen} />
           <Tab.Screen name="NewPost" component={NewPost} />
         </Tab.Navigator>
