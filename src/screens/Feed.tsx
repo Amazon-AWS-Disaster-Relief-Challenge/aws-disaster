@@ -21,7 +21,7 @@ export default function Feed({ navigation, route }: ScreenProps) {
           backgroundColor: "#ddd",
         }}
       >
-        <Text>Hello</Text>
+        Video
         {/* <PostSingle
           item={item}
           ref={(PostSingleRef) => (mediaRefs.current[item.id] = PostSingleRef)}
@@ -34,31 +34,22 @@ export default function Feed({ navigation, route }: ScreenProps) {
     <View
       style={{
         flex: 1,
-        alignItems: "center",
-        justifyContent: "center",
-        position: "absolute",
-        width: "100%",
-        height: "100%",
       }}
     >
       {data && (
-        <>
-          <FlatList
-            data={data.data.listIncidents.items}
-            renderItem={renderItem}
-            keyExtractor={(item) => item.id}
-            decelerationRate={"normal"}
-          />
-
-          <View style={{ zIndex: 1, position: "absolute", bottom: 0 }}>
-            <Text>{data ? data.length : "none"}</Text>
-            <Button
-              title="Go to Other"
-              onPress={() => navigation.navigate("Other")}
-            />
-          </View>
-        </>
+        <FlatList
+          data={data.data.listIncidents.items}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id}
+          decelerationRate={"normal"}
+        />
       )}
     </View>
   );
+}
+{
+  /* <View style={{ zIndex: 1, position: "absolute", bottom: 0 }}>
+  <Text>{data ? data.length : "none"}</Text>
+  <Button title="Go to Other" onPress={() => navigation.navigate("Other")} />
+</View>; */
 }
