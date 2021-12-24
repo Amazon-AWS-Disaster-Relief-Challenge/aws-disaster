@@ -1,94 +1,18 @@
 import * as React from "react";
-import { Dimensions, FlatList, View } from "react-native";
+import { Dimensions, FlatList, Text, View } from "react-native";
 import { API, graphqlOperation } from "aws-amplify";
 import { listIncidents } from "../graphql/queries";
 import { useQuery } from "react-query";
-import { Video } from "expo-av";
 import VideoPlayer from "expo-video-player";
+import { PostSingle } from "../components/PostSingle";
 
-export const PostSingle = React.forwardRef(({ item }: any, parentRef) => {
-  const ref: any = React.useRef(null);
-  // const user = useUser(item.creator).data
-  React.useImperativeHandle(parentRef, () => ({
-    play,
-    unload,
-    stop,
-  }));
-
-  React.useEffect(() => {
-    return () => unload();
-  }, []);
-
-  const play = async () => {
-    if (ref.current == null) {
-      return;
-    }
-
-    const status = await ref.current.getStatusAsync();
-    if (status?.isPlaying) {
-      return;
-    }
-    try {
-      await ref.current.playAsync();
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  const stop = async () => {
-    if (ref.current == null) {
-      return;
-    }
-
-    // if video is already stopped return
-    const status = await ref.current.getStatusAsync();
-    if (!status?.isPlaying) {
-      return;
-    }
-    try {
-      await ref.current.stopAsync();
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
-  const unload = async () => {
-    if (ref.current == null) {
-      return;
-    }
-
-    // if video is already stopped return
-    try {
-      await ref.current.unloadAsync();
-    } catch (e) {
-      console.log(e);
-    }
-  };
-
+export function Modal() {
   return (
-    <>
-      {/* <PostSingleOverlay user={user} post={item} /> */}
-      <Video
-        // ref={ref}
-        style={{
-          flex: 1,
-          height: Dimensions.get("window").height,
-          // width: Dimensions.get("window").width,
-        }}
-        shouldPlay={false}
-        isLooping
-        resizeMode={Video.RESIZE_MODE_COVER}
-        // usePoster
-        // posterSource={{ uri: item.media[1] }}
-        // posterStyle={{ resizeMode: "cover", height: "100%" }}
-        // source={{ uri: item.media[0] }}
-        source={{
-          uri: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
-        }}
-      />
-    </>
+    <View>
+      <Text>Hello</Text>
+    </View>
   );
-});
+}
 
 interface FlatListItem {
   id: string;
@@ -152,6 +76,7 @@ export default function Feed() {
           onViewableItemsChanged={onViewableItemsChanged.current}
         />
       )}
+      <Modal />
     </View>
   );
 }
