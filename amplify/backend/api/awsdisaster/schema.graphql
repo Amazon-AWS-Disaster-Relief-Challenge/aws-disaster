@@ -1,3 +1,10 @@
+type IncidentTags @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  label: String
+  Incident: Incident @hasOne
+  Posts: [Post] @manyToMany(relationName: "IncidentTagsPost")
+}
+
 type Comment @model @auth(rules: [{allow: public}]) {
   id: ID!
   text: String
@@ -24,6 +31,7 @@ type Post @model @auth(rules: [{allow: public}]) {
   status: PostStatus
   email: String
   username: String
+  incidenttagss: [IncidentTags] @manyToMany(relationName: "IncidentTagsPost")
 }
 
 enum IncidentType {

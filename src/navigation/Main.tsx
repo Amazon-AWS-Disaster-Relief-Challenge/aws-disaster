@@ -10,7 +10,8 @@ export default function MainRoute() {
   return (
     <Tab.Navigator
       screenOptions={{ headerShown: false }}
-      initialRouteName="createPost"
+      initialRouteName="feed"
+      tabBar={() => <></>}
     >
       <Tab.Screen
         name="feed"

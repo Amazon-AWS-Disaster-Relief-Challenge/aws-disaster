@@ -3693,10 +3693,10 @@
   resolved "https://registry.yarnpkg.com/@react-native-community/slider/-/slider-4.1.12.tgz#279ff7bbe487af92ad95ec758a029a54569e2a62"
   integrity sha512-CiuLZ2orueBiWHYxfaJF57jQY6HY2Q3z5pdAE4MKH8EqIImr/jgDJrJ/UxOVZHK1Ng9P+XlGIKfVIcuWZ6guuA==
 
-"@react-native-picker/picker@2.1.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@react-native-picker/picker/-/picker-2.1.0.tgz#1ef22d4e9b2e555d44b43453f51a46d8631f3182"
-  integrity sha512-iJ/QaDrBMBaW6cFuQyR3DXzcn2h7c5O7mGgmNLCBQHTTtLNBZR+Sxogy6YleFPeToNdysG5mTTkXqBmlWHMQqg==
+"@react-native-picker/picker@2.2.1":
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/@react-native-picker/picker/-/picker-2.2.1.tgz#32b9f540d8e88a73d8856f73cca88251cecb9614"
+  integrity sha512-EC7yv22QLHlTfnbC1ez9IUdXTOh1W31x96Oir0PfskSGFFJMWWdLTg4VrcE2DsGLzbfjjkBk123c173vf2a5MQ==
 
 "@react-native/assets@1.0.0":
   version "1.0.0"
@@ -3933,7 +3933,7 @@
     "@types/react" "*"
     "@types/react-native" "*"
 
-"@types/react-native@*", "@types/react-native@^0.66.9":
+"@types/react-native@*", "@types/react-native@^0.66.10":
   version "0.66.10"
   resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.66.10.tgz#b6940428a509a4d90bac9e7fbb4877a1de911324"
   integrity sha512-3AyXa3YB918I0Mk6kyebnVJSe3JsVETestSPPzU5YFmIMnri2yS1KRIxMIpoVm2hu/as0PkIfsbjVvoEMKNT8A==
@@ -8522,10 +8522,10 @@ react-freeze@^1.0.0:
   resolved "https://registry.yarnpkg.com/react-freeze/-/react-freeze-1.0.0.tgz#b21c65fe1783743007c8c9a2952b1c8879a77354"
   integrity sha512-yQaiOqDmoKqks56LN9MTgY06O0qQHgV4FUrikH357DydArSZHQhl0BJFqGKIZoTqi8JizF9Dxhuk1FIZD6qCaw==
 
-react-hook-form@^7.22.4:
-  version "7.22.4"
-  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.22.4.tgz#60119620c93915fa3e51ed0b3b9003a86ba9ac48"
-  integrity sha512-F8Ezs55y0PwLhBncOrJoRSP02SgDzDDeM/N4wNDTAYlettg2ZSJuEp20cbJUL7BZj8fvKVeFySPbXF145b0I6w==
+react-hook-form@^7.22.5:
+  version "7.22.5"
+  resolved "https://registry.yarnpkg.com/react-hook-form/-/react-hook-form-7.22.5.tgz#85a135f3c5ae02ccf73096a03fc14b45607e9baa"
+  integrity sha512-Q2zaeQFXdVQ8l3hcywhltH+Nzj4vo50wMVujHDVN/1Xy9IOaSZJwYBXA2CYTpK6rq41fnXviw3jTLb04c7Gu9Q==
 
 react-is@^16.13.0, react-is@^16.13.1, react-is@^16.7.0:
   version "16.13.1"
@@ -8564,10 +8564,10 @@ react-native-get-random-values@^1.4.0:
   dependencies:
     fast-base64-decode "^1.0.0"
 
-react-native-maps@0.29.4:
-  version "0.29.4"
-  resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.29.4.tgz#eb4a446104ed2aca5361422d06712f26d4c0d562"
-  integrity sha512-Td2KE8+KODcHOxfB1GBNnzFo4/89rlLiC7yTvqQZh0tGVrEzIcgSleUZRrjtq/WvSWSR4rql4AS+0VsBgDkYrw==
+react-native-maps@0.30.0:
+  version "0.30.0"
+  resolved "https://registry.yarnpkg.com/react-native-maps/-/react-native-maps-0.30.0.tgz#3524cf864e28b3b7367d441b61ef224061310b4c"
+  integrity sha512-wJs5E5+IVJiImx6fTAfuYFZ7WQ190NVW3JEzJjZrLTkEjIkVq1pDnkRhkn7GC22Ks/ofYmdXzfnTqga1+XOhog==
   dependencies:
     "@types/geojson" "^7946.0.7"
 

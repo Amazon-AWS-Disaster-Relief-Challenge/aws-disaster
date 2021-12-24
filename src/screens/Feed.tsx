@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Dimensions, FlatList, Text, View } from "react-native";
 import { API, graphqlOperation } from "aws-amplify";
-import { listIncidents } from "../graphql/queries";
+import { listPosts } from "../graphql/queries";
 import { useQuery } from "react-query";
 import VideoPlayer from "expo-video-player";
 import { PostSingle } from "../components/PostSingle";
@@ -25,9 +25,9 @@ export default function Feed() {
     typeof VideoPlayer[]
   >;
 
-  const { data } = useQuery<any>("incidents", async () =>
+  const { data } = useQuery<any>("posts", async () =>
     API.graphql(
-      graphqlOperation(listIncidents, {
+      graphqlOperation(listPosts, {
         limit: 10,
       })
     )
@@ -49,7 +49,7 @@ export default function Feed() {
     });
   });
 
-  const renderItem = ({ item }: { item: FlatListItem }) => {
+  const renderItem = ({ item: post }: { item: FlatListItem }) => {
     return (
       <View
         style={{
@@ -58,8 +58,8 @@ export default function Feed() {
         }}
       >
         <PostSingle
-          item={item}
-          ref={(PostSingleRef) => (mediaRefs.current[item.id] = PostSingleRef)}
+          post={post}
+          ref={(PostSingleRef) => (mediaRefs.current[post.id] = PostSingleRef)}
         />
       </View>
     );
@@ -69,14 +69,13 @@ export default function Feed() {
     <View style={{ flex: 1 }}>
       {data && (
         <FlatList
-          data={data.data.listIncidents.items}
+          data={data.data.listPosts.items}
           renderItem={renderItem}
           keyExtractor={(item: FlatListItem) => item.id}
           decelerationRate={"normal"}
           onViewableItemsChanged={onViewableItemsChanged.current}
         />
       )}
-      <Modal />
     </View>
   );
 }
