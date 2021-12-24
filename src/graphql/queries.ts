@@ -2,15 +2,77 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const getComment = /* GraphQL */ `
+  query GetComment($id: ID!) {
+    getComment(id: $id) {
+      id
+      text
+      createdAt
+      updatedAt
+      _version
+      _deleted
+      _lastChangedAt
+    }
+  }
+`;
+export const listComments = /* GraphQL */ `
+  query ListComments(
+    $filter: ModelCommentFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listComments(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        text
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const syncComments = /* GraphQL */ `
+  query SyncComments(
+    $filter: ModelCommentFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncComments(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        text
+        createdAt
+        updatedAt
+        _version
+        _deleted
+        _lastChangedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
 export const getPost = /* GraphQL */ `
   query GetPost($id: ID!) {
     getPost(id: $id) {
       id
       title
       type
-      author
       likes
       status
+      email
+      username
       createdAt
       updatedAt
       _version
@@ -30,9 +92,10 @@ export const listPosts = /* GraphQL */ `
         id
         title
         type
-        author
         likes
         status
+        email
+        username
         createdAt
         updatedAt
         _version
@@ -61,9 +124,10 @@ export const syncPosts = /* GraphQL */ `
         id
         title
         type
-        author
         likes
         status
+        email
+        username
         createdAt
         updatedAt
         _version

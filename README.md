@@ -17,3 +17,6 @@ Detup the `dev` Amplify environment
 
         // Token
         CEdSSnjOpsHyANNJK5/PagXxbM6aiVeCpm5RwMce
+
+1.  Install Expo Go on your mobile
+1.  Run `yarn start --https` and select `ios` or `android`
