@@ -13,8 +13,7 @@
     "noEmit": true,
     "strict": true,
     "target": "ES2018",
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "baseUrl": "."
+    "lib": ["dom", "dom.iterable", "esnext"]
   },
   "include": ["**/*.ts", "**/*.tsx"],
   "exclude": ["node_modules"]

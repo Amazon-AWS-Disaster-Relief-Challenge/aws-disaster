@@ -1,10 +1,12 @@
 import * as React from "react";
-import { Button, Dimensions, FlatList, Text, View } from "react-native";
+import { FlatList, View } from "react-native";
 import { API, graphqlOperation } from "aws-amplify";
 import { listIncidents } from "../graphql/queries";
 import { useQuery } from "react-query";
+import { Video } from "expo-av";
+import VideoPlayer from "expo-video-player";
 
-export default function Feed({ navigation, route }: ScreenProps) {
+export default function Feed(props: ScreenProps) {
   const { data } = useQuery("incidents", async () =>
     API.graphql(
       graphqlOperation(listIncidents, {
@@ -13,23 +15,20 @@ export default function Feed({ navigation, route }: ScreenProps) {
     )
   );
 
-  const renderItem = ({ _, i }: any) => {
+  const renderItem = () => {
     return (
-      <View
-        style={{
-          height: Dimensions.get("window").height - 50,
-          backgroundColor: "#ddd",
+      <VideoPlayer
+        videoProps={{
+          shouldPlay: true,
+          resizeMode: Video.RESIZE_MODE_STRETCH,
+          source: {
+            uri: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+          },
         }}
-      >
-        <Text>Video</Text>
-        {/* <PostSingle
-          item={item}
-          ref={(PostSingleRef) => (mediaRefs.current[item.id] = PostSingleRef)}
-        /> */}
-      </View>
+      />
     );
   };
-  // console.log("route", route);
+
   return (
     <View
       style={{
@@ -46,10 +45,4 @@ export default function Feed({ navigation, route }: ScreenProps) {
       )}
     </View>
   );
-}
-{
-  /* <View style={{ zIndex: 1, position: "absolute", bottom: 0 }}>
-  <Text>{data ? data.length : "none"}</Text>
-  <Button title="Go to Other" onPress={() => navigation.navigate("Other")} />
-</View>; */
 }
