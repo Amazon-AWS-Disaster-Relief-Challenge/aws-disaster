@@ -23,6 +23,10 @@ export enum IncidentType {
 
 
 
+type CommentMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
 type PostMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
@@ -31,13 +35,23 @@ type IncidentMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
+export declare class Comment {
+  readonly id: string;
+  readonly text?: string;
+  readonly createdAt?: string;
+  readonly updatedAt?: string;
+  constructor(init: ModelInit<Comment, CommentMetaData>);
+  static copyOf(source: Comment, mutator: (draft: MutableModel<Comment, CommentMetaData>) => MutableModel<Comment, CommentMetaData> | void): Comment;
+}
+
 export declare class Post {
   readonly id: string;
   readonly title?: string;
   readonly type?: PostType | keyof typeof PostType;
-  readonly author?: string;
   readonly likes?: number;
   readonly status?: PostStatus | keyof typeof PostStatus;
+  readonly email?: string;
+  readonly username?: string;
   readonly createdAt?: string;
   readonly updatedAt?: string;
   constructor(init: ModelInit<Post, PostMetaData>);

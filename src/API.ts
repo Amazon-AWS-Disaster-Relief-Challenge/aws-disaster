@@ -2,40 +2,17 @@
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 
-export type CreatePostInput = {
+export type CreateCommentInput = {
   id?: string | null,
-  title?: string | null,
-  type?: PostType | null,
-  author?: string | null,
-  likes?: number | null,
-  status?: PostStatus | null,
+  text?: string | null,
   _version?: number | null,
 };
 
-export enum PostType {
-  TEXT = "TEXT",
-  PHOTO = "PHOTO",
-  VIDEO = "VIDEO",
-  AUDIO = "AUDIO",
-}
-
-
-export enum PostStatus {
-  DRAFT = "DRAFT",
-  PUBLISHED = "PUBLISHED",
-  REMOVED = "REMOVED",
-}
-
-
-export type ModelPostConditionInput = {
-  title?: ModelStringInput | null,
-  type?: ModelPostTypeInput | null,
-  author?: ModelStringInput | null,
-  likes?: ModelIntInput | null,
-  status?: ModelPostStatusInput | null,
-  and?: Array< ModelPostConditionInput | null > | null,
-  or?: Array< ModelPostConditionInput | null > | null,
-  not?: ModelPostConditionInput | null,
+export type ModelCommentConditionInput = {
+  text?: ModelStringInput | null,
+  and?: Array< ModelCommentConditionInput | null > | null,
+  or?: Array< ModelCommentConditionInput | null > | null,
+  not?: ModelCommentConditionInput | null,
 };
 
 export type ModelStringInput = {
@@ -78,6 +55,66 @@ export type ModelSizeInput = {
   between?: Array< number | null > | null,
 };
 
+export type Comment = {
+  __typename: "Comment",
+  id: string,
+  text?: string | null,
+  createdAt: string,
+  updatedAt: string,
+  _version: number,
+  _deleted?: boolean | null,
+  _lastChangedAt: number,
+};
+
+export type UpdateCommentInput = {
+  id: string,
+  text?: string | null,
+  _version?: number | null,
+};
+
+export type DeleteCommentInput = {
+  id: string,
+  _version?: number | null,
+};
+
+export type CreatePostInput = {
+  id?: string | null,
+  title?: string | null,
+  type?: PostType | null,
+  likes?: number | null,
+  status?: PostStatus | null,
+  email?: string | null,
+  username?: string | null,
+  _version?: number | null,
+};
+
+export enum PostType {
+  TEXT = "TEXT",
+  PHOTO = "PHOTO",
+  VIDEO = "VIDEO",
+  AUDIO = "AUDIO",
+}
+
+
+export enum PostStatus {
+  DRAFT = "DRAFT",
+  PUBLISHED = "PUBLISHED",
+  REMOVED = "REMOVED",
+}
+
+
+export type ModelPostConditionInput = {
+  title?: ModelStringInput | null,
+  type?: ModelPostTypeInput | null,
+  likes?: ModelIntInput | null,
+  status?: ModelPostStatusInput | null,
+  email?: ModelStringInput | null,
+  username?: ModelStringInput | null,
+  and?: Array< ModelPostConditionInput | null > | null,
+  or?: Array< ModelPostConditionInput | null > | null,
+  not?: ModelPostConditionInput | null,
+};
+
 export type ModelPostTypeInput = {
   eq?: PostType | null,
   ne?: PostType | null,
@@ -105,9 +142,10 @@ export type Post = {
   id: string,
   title?: string | null,
   type?: PostType | null,
-  author?: string | null,
   likes?: number | null,
   status?: PostStatus | null,
+  email?: string | null,
+  username?: string | null,
   createdAt: string,
   updatedAt: string,
   _version: number,
@@ -119,9 +157,10 @@ export type UpdatePostInput = {
   id: string,
   title?: string | null,
   type?: PostType | null,
-  author?: string | null,
   likes?: number | null,
   status?: PostStatus | null,
+  email?: string | null,
+  username?: string | null,
   _version?: number | null,
 };
 
@@ -191,16 +230,12 @@ export type DeleteIncidentInput = {
   _version?: number | null,
 };
 
-export type ModelPostFilterInput = {
+export type ModelCommentFilterInput = {
   id?: ModelIDInput | null,
-  title?: ModelStringInput | null,
-  type?: ModelPostTypeInput | null,
-  author?: ModelStringInput | null,
-  likes?: ModelIntInput | null,
-  status?: ModelPostStatusInput | null,
-  and?: Array< ModelPostFilterInput | null > | null,
-  or?: Array< ModelPostFilterInput | null > | null,
-  not?: ModelPostFilterInput | null,
+  text?: ModelStringInput | null,
+  and?: Array< ModelCommentFilterInput | null > | null,
+  or?: Array< ModelCommentFilterInput | null > | null,
+  not?: ModelCommentFilterInput | null,
 };
 
 export type ModelIDInput = {
@@ -217,6 +252,26 @@ export type ModelIDInput = {
   attributeExists?: boolean | null,
   attributeType?: ModelAttributeTypes | null,
   size?: ModelSizeInput | null,
+};
+
+export type ModelCommentConnection = {
+  __typename: "ModelCommentConnection",
+  items:  Array<Comment | null >,
+  nextToken?: string | null,
+  startedAt?: number | null,
+};
+
+export type ModelPostFilterInput = {
+  id?: ModelIDInput | null,
+  title?: ModelStringInput | null,
+  type?: ModelPostTypeInput | null,
+  likes?: ModelIntInput | null,
+  status?: ModelPostStatusInput | null,
+  email?: ModelStringInput | null,
+  username?: ModelStringInput | null,
+  and?: Array< ModelPostFilterInput | null > | null,
+  or?: Array< ModelPostFilterInput | null > | null,
+  not?: ModelPostFilterInput | null,
 };
 
 export type ModelPostConnection = {
@@ -244,6 +299,60 @@ export type ModelIncidentConnection = {
   startedAt?: number | null,
 };
 
+export type CreateCommentMutationVariables = {
+  input: CreateCommentInput,
+  condition?: ModelCommentConditionInput | null,
+};
+
+export type CreateCommentMutation = {
+  createComment?:  {
+    __typename: "Comment",
+    id: string,
+    text?: string | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
+};
+
+export type UpdateCommentMutationVariables = {
+  input: UpdateCommentInput,
+  condition?: ModelCommentConditionInput | null,
+};
+
+export type UpdateCommentMutation = {
+  updateComment?:  {
+    __typename: "Comment",
+    id: string,
+    text?: string | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
+};
+
+export type DeleteCommentMutationVariables = {
+  input: DeleteCommentInput,
+  condition?: ModelCommentConditionInput | null,
+};
+
+export type DeleteCommentMutation = {
+  deleteComment?:  {
+    __typename: "Comment",
+    id: string,
+    text?: string | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
+};
+
 export type CreatePostMutationVariables = {
   input: CreatePostInput,
   condition?: ModelPostConditionInput | null,
@@ -255,9 +364,10 @@ export type CreatePostMutation = {
     id: string,
     title?: string | null,
     type?: PostType | null,
-    author?: string | null,
     likes?: number | null,
     status?: PostStatus | null,
+    email?: string | null,
+    username?: string | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -277,9 +387,10 @@ export type UpdatePostMutation = {
     id: string,
     title?: string | null,
     type?: PostType | null,
-    author?: string | null,
     likes?: number | null,
     status?: PostStatus | null,
+    email?: string | null,
+    username?: string | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -299,9 +410,10 @@ export type DeletePostMutation = {
     id: string,
     title?: string | null,
     type?: PostType | null,
-    author?: string | null,
     likes?: number | null,
     status?: PostStatus | null,
+    email?: string | null,
+    username?: string | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -373,6 +485,72 @@ export type DeleteIncidentMutation = {
   } | null,
 };
 
+export type GetCommentQueryVariables = {
+  id: string,
+};
+
+export type GetCommentQuery = {
+  getComment?:  {
+    __typename: "Comment",
+    id: string,
+    text?: string | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
+};
+
+export type ListCommentsQueryVariables = {
+  filter?: ModelCommentFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListCommentsQuery = {
+  listComments?:  {
+    __typename: "ModelCommentConnection",
+    items:  Array< {
+      __typename: "Comment",
+      id: string,
+      text?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+    } | null >,
+    nextToken?: string | null,
+    startedAt?: number | null,
+  } | null,
+};
+
+export type SyncCommentsQueryVariables = {
+  filter?: ModelCommentFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+  lastSync?: number | null,
+};
+
+export type SyncCommentsQuery = {
+  syncComments?:  {
+    __typename: "ModelCommentConnection",
+    items:  Array< {
+      __typename: "Comment",
+      id: string,
+      text?: string | null,
+      createdAt: string,
+      updatedAt: string,
+      _version: number,
+      _deleted?: boolean | null,
+      _lastChangedAt: number,
+    } | null >,
+    nextToken?: string | null,
+    startedAt?: number | null,
+  } | null,
+};
+
 export type GetPostQueryVariables = {
   id: string,
 };
@@ -383,9 +561,10 @@ export type GetPostQuery = {
     id: string,
     title?: string | null,
     type?: PostType | null,
-    author?: string | null,
     likes?: number | null,
     status?: PostStatus | null,
+    email?: string | null,
+    username?: string | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -408,9 +587,10 @@ export type ListPostsQuery = {
       id: string,
       title?: string | null,
       type?: PostType | null,
-      author?: string | null,
       likes?: number | null,
       status?: PostStatus | null,
+      email?: string | null,
+      username?: string | null,
       createdAt: string,
       updatedAt: string,
       _version: number,
@@ -437,9 +617,10 @@ export type SyncPostsQuery = {
       id: string,
       title?: string | null,
       type?: PostType | null,
-      author?: string | null,
       likes?: number | null,
       status?: PostStatus | null,
+      email?: string | null,
+      username?: string | null,
       createdAt: string,
       updatedAt: string,
       _version: number,
@@ -526,15 +707,55 @@ export type SyncIncidentsQuery = {
   } | null,
 };
 
+export type OnCreateCommentSubscription = {
+  onCreateComment?:  {
+    __typename: "Comment",
+    id: string,
+    text?: string | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
+};
+
+export type OnUpdateCommentSubscription = {
+  onUpdateComment?:  {
+    __typename: "Comment",
+    id: string,
+    text?: string | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
+};
+
+export type OnDeleteCommentSubscription = {
+  onDeleteComment?:  {
+    __typename: "Comment",
+    id: string,
+    text?: string | null,
+    createdAt: string,
+    updatedAt: string,
+    _version: number,
+    _deleted?: boolean | null,
+    _lastChangedAt: number,
+  } | null,
+};
+
 export type OnCreatePostSubscription = {
   onCreatePost?:  {
     __typename: "Post",
     id: string,
     title?: string | null,
     type?: PostType | null,
-    author?: string | null,
     likes?: number | null,
     status?: PostStatus | null,
+    email?: string | null,
+    username?: string | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -549,9 +770,10 @@ export type OnUpdatePostSubscription = {
     id: string,
     title?: string | null,
     type?: PostType | null,
-    author?: string | null,
     likes?: number | null,
     status?: PostStatus | null,
+    email?: string | null,
+    username?: string | null,
     createdAt: string,
     updatedAt: string,
     _version: number,
@@ -566,9 +788,10 @@ export type OnDeletePostSubscription = {
     id: string,
     title?: string | null,
     type?: PostType | null,
-    author?: string | null,
     likes?: number | null,
     status?: PostStatus | null,
+    email?: string | null,
+    username?: string | null,
     createdAt: string,
     updatedAt: string,
     _version: number,

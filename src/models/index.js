@@ -23,9 +23,10 @@ const IncidentType = {
   "HURRICANE": "HURRICANE"
 };
 
-const { Post, Incident } = initSchema(schema);
+const { Comment, Post, Incident } = initSchema(schema);
 
 export {
+  Comment,
   Post,
   Incident,
   PostType,

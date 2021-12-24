@@ -3,19 +3,22 @@ import { useForm, Controller } from "react-hook-form";
 import { Button, Text, TextInput, View } from "react-native";
 import tailwind from "tailwind-rn";
 import { API, graphqlOperation } from "aws-amplify";
-import { useMutation } from "react-query";
+import { useMutation, useQuery } from "react-query";
 import { createPost } from "../graphql/mutations";
+/* Import the Amplify Auth API */
+import { Auth } from "aws-amplify";
 
-export default function NewPost({ navigation }: ScreenProps) {
+export default function NewPost() {
+  const { data: user } = useQuery("user", async () =>
+    Auth.currentAuthenticatedUser()
+  );
+
   const {
     control,
     handleSubmit,
     formState: { errors },
   } = useForm({
-    defaultValues: {
-      title: "f123oo",
-      author: 4,
-    },
+    defaultValues: { title: "" },
   });
 
   const mutation = useMutation(async (data) => {
@@ -24,7 +27,11 @@ export default function NewPost({ navigation }: ScreenProps) {
 
   const onSubmit = async (data: any) => {
     try {
-      await mutation.mutate(data);
+      await mutation.mutate({
+        ...data,
+        username: user.username,
+        email: user.attributes.email,
+      });
     } catch (error) {
       console.log("error", error);
     }
@@ -32,12 +39,10 @@ export default function NewPost({ navigation }: ScreenProps) {
 
   return (
     <View style={tailwind("p-5 pt-20")}>
-      <Text>Hello</Text>
+      <Text style={tailwind("text-2xl text-gray-800")}>Leave a comment</Text>
       <Controller
         control={control}
-        rules={{
-          required: true,
-        }}
+        rules={{ required: true }}
         render={({ field: { onChange, onBlur, value } }) => (
           <TextInput
             style={tailwind("w-full p-2 my-3 text-3xl border")}
@@ -49,22 +54,6 @@ export default function NewPost({ navigation }: ScreenProps) {
         name="title"
       />
       {errors.title && <Text>This is required.</Text>}
-      <Controller
-        control={control}
-        rules={{
-          maxLength: 100,
-        }}
-        render={({ field: { onChange, onBlur, value } }) => (
-          <TextInput
-            style={tailwind("w-full p-2 my-3 text-3xl border")}
-            onBlur={onBlur}
-            onChangeText={onChange}
-            value={value}
-          />
-        )}
-        name="author"
-      />
-      <Text>Goodbye</Text>
 
       <Button
         style={tailwind("w-full p-5 text-3xl border")}
