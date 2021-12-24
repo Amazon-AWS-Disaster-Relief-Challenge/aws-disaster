@@ -21,7 +21,7 @@ export default function Feed({ navigation, route }: ScreenProps) {
           backgroundColor: "#ddd",
         }}
       >
-        Video
+        <Text>Video</Text>
         {/* <PostSingle
           item={item}
           ref={(PostSingleRef) => (mediaRefs.current[item.id] = PostSingleRef)}
