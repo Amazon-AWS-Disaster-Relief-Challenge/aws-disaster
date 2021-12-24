@@ -7,7 +7,6 @@ import Amplify from "aws-amplify";
 
 import config from "./src/aws-exports";
 import Main from "./src/navigation/Main";
-
 Amplify.configure({
   ...config,
   Analytics: {

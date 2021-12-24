@@ -1,14 +1,17 @@
 import * as React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Feed from "../screens/Feed";
-import NewPost from "../screens/NewPost";
-import DisasterHeatmap from "../screens/DisasterHeatmap";
+import createPost from "../screens/createPost";
+import Map from "../screens/Map";
 import { Feather } from "@expo/vector-icons";
 export const Tab = createBottomTabNavigator();
 
 export default function MainRoute() {
   return (
-    <Tab.Navigator screenOptions={{ headerShown: false }}>
+    <Tab.Navigator
+      screenOptions={{ headerShown: false }}
+      initialRouteName="createPost"
+    >
       <Tab.Screen
         name="feed"
         component={Feed}
@@ -20,7 +23,7 @@ export default function MainRoute() {
       />
       <Tab.Screen
         name="map"
-        component={DisasterHeatmap}
+        component={Map}
         options={{
           tabBarIcon: ({ color }) => (
             <Feather name="search" size={24} color={color} />
@@ -28,8 +31,8 @@ export default function MainRoute() {
         }}
       />
       <Tab.Screen
-        name="newPost"
-        component={NewPost}
+        name="createPost"
+        component={createPost}
         options={{
           tabBarIcon: ({ color }) => (
             <Feather name="plus-square" size={24} color={color} />

@@ -2,8 +2,9 @@ import * as React from "react";
 import { useForm, Controller } from "react-hook-form";
 import { Button, Text, TextInput, View } from "react-native";
 import tailwind from "tailwind-rn";
-
-// const
+import { API, graphqlOperation } from "aws-amplify";
+import { useMutation } from "react-query";
+import { createPost } from "../graphql/mutations";
 
 export default function NewPost({ navigation }: ScreenProps) {
   const {
@@ -12,14 +13,25 @@ export default function NewPost({ navigation }: ScreenProps) {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      firstName: "",
-      lastName: "",
+      title: "f123oo",
+      author: 4,
     },
   });
-  // const { data, error} = use
+
+  const mutation = useMutation(async (data) => {
+    return API.graphql(graphqlOperation(createPost, { input: data }));
+  });
+
+  const onSubmit = async (data: any) => {
+    try {
+      await mutation.mutate(data);
+    } catch (error) {
+      console.log("error", error);
+    }
+  };
 
   return (
-    <View style={tailwind("p-5")}>
+    <View style={tailwind("p-5 pt-20")}>
       <Text>Hello</Text>
       <Controller
         control={control}
@@ -34,9 +46,9 @@ export default function NewPost({ navigation }: ScreenProps) {
             value={value}
           />
         )}
-        name="firstName"
+        name="title"
       />
-      {errors.firstName && <Text>This is required.</Text>}
+      {errors.title && <Text>This is required.</Text>}
       <Controller
         control={control}
         rules={{
@@ -50,15 +62,15 @@ export default function NewPost({ navigation }: ScreenProps) {
             value={value}
           />
         )}
-        name="lastName"
+        name="author"
       />
       <Text>Goodbye</Text>
 
-      {/* <Button
+      <Button
         style={tailwind("w-full p-5 text-3xl border")}
         title="Submit"
         onPress={handleSubmit(onSubmit)}
-      /> */}
+      />
     </View>
   );
 }

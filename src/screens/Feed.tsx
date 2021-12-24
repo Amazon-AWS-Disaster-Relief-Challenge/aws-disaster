@@ -75,7 +75,7 @@ export const PostSingle = React.forwardRef(({ item }: any, parentRef) => {
           height: Dimensions.get("window").height,
           // width: Dimensions.get("window").width,
         }}
-        shouldPlay={true}
+        shouldPlay={false}
         isLooping
         resizeMode={Video.RESIZE_MODE_COVER}
         // usePoster
@@ -90,12 +90,18 @@ export const PostSingle = React.forwardRef(({ item }: any, parentRef) => {
   );
 });
 
-export default function Feed(props: ScreenProps) {
+interface FlatListItem {
+  id: string;
+  media: string[];
+  [key: string]: any;
+}
+
+export default function Feed() {
   const mediaRefs: any = React.useRef([]) as React.MutableRefObject<
     typeof VideoPlayer[]
   >;
 
-  const { data } = useQuery("incidents", async () =>
+  const { data } = useQuery<any>("incidents", async () =>
     API.graphql(
       graphqlOperation(listIncidents, {
         limit: 10,
@@ -119,12 +125,12 @@ export default function Feed(props: ScreenProps) {
     });
   });
 
-  const renderItem = ({ item, index }: any) => {
+  const renderItem = ({ item }: { item: FlatListItem }) => {
     return (
       <View
         style={{
+          width: Dimensions.get("window").width,
           height: Dimensions.get("window").height,
-          //   backgroundColor: "red",
         }}
       >
         <PostSingle
@@ -136,17 +142,12 @@ export default function Feed(props: ScreenProps) {
   };
 
   return (
-    <View
-      style={{
-        flex: 1,
-        // height: Dimensions.get("window").height,
-      }}
-    >
+    <View style={{ flex: 1 }}>
       {data && (
         <FlatList
           data={data.data.listIncidents.items}
           renderItem={renderItem}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item: FlatListItem) => item.id}
           decelerationRate={"normal"}
           onViewableItemsChanged={onViewableItemsChanged.current}
         />
