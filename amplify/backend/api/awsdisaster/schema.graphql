@@ -1,3 +1,15 @@
+type IncidentTags @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  label: String
+  Incident: Incident @hasOne
+  Posts: [Post] @manyToMany(relationName: "IncidentTagsPost")
+}
+
+type Comment @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  text: String
+}
+
 enum PostType {
   TEXT
   PHOTO
@@ -11,13 +23,15 @@ enum PostStatus {
   REMOVED
 }
 
-type Post @model @auth(rules: [{ allow: public }]) {
+type Post @model @auth(rules: [{allow: public}]) {
   id: ID!
   title: String
   type: PostType
-  author: String
   likes: Int
   status: PostStatus
+  email: String
+  username: String
+  incidenttagss: [IncidentTags] @manyToMany(relationName: "IncidentTagsPost")
 }
 
 enum IncidentType {
@@ -28,10 +42,11 @@ enum IncidentType {
   HURRICANE
 }
 
-type Incident @model @auth(rules: [{ allow: public }]) {
+type Incident @model @auth(rules: [{allow: public}]) {
   id: ID!
   title: String
   longitude: String
   latitude: String
   type: IncidentType
 }
+ 

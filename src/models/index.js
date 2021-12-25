@@ -2,6 +2,14 @@
 import { initSchema } from '@aws-amplify/datastore';
 import { schema } from './schema';
 
+const IncidentType = {
+  "FIRE": "FIRE",
+  "EARTHQUAKE": "EARTHQUAKE",
+  "FLOOD": "FLOOD",
+  "TORNADO": "TORNADO",
+  "HURRICANE": "HURRICANE"
+};
+
 const PostType = {
   "TEXT": "TEXT",
   "PHOTO": "PHOTO",
@@ -15,20 +23,15 @@ const PostStatus = {
   "REMOVED": "REMOVED"
 };
 
-const IncidentType = {
-  "FIRE": "FIRE",
-  "EARTHQUAKE": "EARTHQUAKE",
-  "FLOOD": "FLOOD",
-  "TORNADO": "TORNADO",
-  "HURRICANE": "HURRICANE"
-};
-
-const { Post, Incident } = initSchema(schema);
+const { IncidentTags, Incident, Post, Comment, IncidentTagsPost } = initSchema(schema);
 
 export {
-  Post,
+  IncidentTags,
   Incident,
+  Post,
+  Comment,
+  IncidentTagsPost,
+  IncidentType,
   PostType,
-  PostStatus,
-  IncidentType
+  PostStatus
 };
