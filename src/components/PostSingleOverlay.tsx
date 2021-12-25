@@ -41,6 +41,7 @@ export function PostSingleOverlay({
   navigation,
   showCommentModal,
 }: any) {
+  const PlayIcon: any = icons["MaterialCommunityIcons"];
   return (
     <Pressable
       style={{
@@ -83,6 +84,15 @@ export function PostSingleOverlay({
           })}
         </View>
       )}
+      <View
+        style={tailwind(
+          "flex flex-row items-center justify-between px-5 -mx-1"
+        )}
+      >
+        <Pressable style={tailwind("rounded-full m-0 p-0")}>
+          <PlayIcon size="40" name="play-circle" color="white" />
+        </Pressable>
+      </View>
       <View style={tailwind("flex flex-row items-center justify-between p-5")}>
         <Pressable
           style={tailwind(
