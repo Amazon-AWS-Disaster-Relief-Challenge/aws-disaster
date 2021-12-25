@@ -1,32 +1,7 @@
 import * as React from "react";
-import { Dimensions, Text, View } from "react-native";
+import { SafeAreaView } from "react-native";
 import { Video } from "expo-av";
-import tailwind from "tailwind-rn";
-
-export function PostSingleOverlay({ post }: any) {
-  // console.log(
-  //   "🚀 ~ file: PostSingle.tsx ~ line 7 ~ PostSingleOverlay ~ post",
-  //   post
-  // );
-  return (
-    <View
-      style={{
-        width: Dimensions.get("window").width,
-        position: "absolute",
-        zIndex: 999,
-        bottom: 0,
-        paddingLeft: 20,
-        paddingBottom: 20,
-        paddingRight: 10,
-        flexDirection: "row",
-        justifyContent: "space-between",
-        alignItems: "flex-end",
-      }}
-    >
-      <Text style={tailwind("text-3xl text-black")}>Title: {post.title}</Text>
-    </View>
-  );
-}
+import { PostSingleOverlay } from "./PostSingleOverlay";
 
 export const PostSingle = React.forwardRef(({ post }: any, parentRef) => {
   const ref: any = React.useRef(null);
@@ -94,8 +69,6 @@ export const PostSingle = React.forwardRef(({ post }: any, parentRef) => {
         ref={ref}
         style={{
           flex: 1,
-          // height: Dimensions.get("window").height,
-          // // width: Dimensions.get("window").width,
         }}
         shouldPlay={true}
         isLooping

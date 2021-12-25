@@ -1,10 +1,11 @@
 import * as React from "react";
-import { Dimensions, FlatList, Text, View } from "react-native";
+import { Dimensions, FlatList, SafeAreaView, Text, View } from "react-native";
 import { API, graphqlOperation } from "aws-amplify";
 import { listPosts } from "../graphql/queries";
 import { useQuery } from "react-query";
 import VideoPlayer from "expo-video-player";
 import { PostSingle } from "../components/PostSingle";
+import { PostSingleOverlay } from "../components/PostSingleOverlay";
 
 export function Modal() {
   return (
@@ -28,7 +29,7 @@ export default function Feed() {
   const { data } = useQuery<any>("posts", async () =>
     API.graphql(
       graphqlOperation(listPosts, {
-        limit: 10,
+        limit: 4,
       })
     )
   );
@@ -55,6 +56,9 @@ export default function Feed() {
         style={{
           width: Dimensions.get("window").width,
           height: Dimensions.get("window").height,
+          //   flex: 1,
+          //   justifyContent: "center",
+          //   alignItems: "center",
         }}
       >
         <PostSingle
@@ -69,11 +73,14 @@ export default function Feed() {
     <View style={{ flex: 1 }}>
       {data && (
         <FlatList
+          windowSize={4}
           data={data.data.listPosts.items}
           renderItem={renderItem}
           keyExtractor={(item: FlatListItem) => item.id}
-          decelerationRate={"normal"}
+          decelerationRate="fast"
           onViewableItemsChanged={onViewableItemsChanged.current}
+          snapToAlignment="center"
+          snapToInterval={Dimensions.get("window").height}
         />
       )}
     </View>
