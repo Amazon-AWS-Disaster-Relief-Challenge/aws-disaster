@@ -1,7 +1,38 @@
 import * as React from "react";
 import { Dimensions, Pressable, SafeAreaView, Text, View } from "react-native";
 import tailwind from "tailwind-rn";
+import * as icons from "@expo/vector-icons";
+import { color } from "react-native-reanimated";
 
+const links = [
+  {
+    id: "close",
+    icon: "x",
+    iconLib: "Feather",
+  },
+  {
+    id: "share",
+    icon: "share",
+    iconLib: "MaterialCommunityIcons",
+    size: 30,
+  },
+  {
+    id: "comment",
+    icon: "chat",
+    iconLib: "MaterialIcons",
+  },
+];
+export function IconButton({ icon, iconLib, size, ...props }: any) {
+  const Icon: any = icons[iconLib || "Feather"];
+  return (
+    <Pressable
+      style={tailwind("p-2 my-2 mx-3 rounded-full bg-white bg-opacity-20")}
+      {...props}
+    >
+      <Icon name={icon} size={26} color="black" />
+    </Pressable>
+  );
+}
 export function PostSingleOverlay({
   post,
   stop,
@@ -25,7 +56,7 @@ export function PostSingleOverlay({
       onPressIn={() => pause()}
       onPressOut={() => play()}
     >
-      <View style={tailwind("flex flex-row justify-between")}>
+      {/* <View style={tailwind("flex flex-row justify-between")}>
         <Pressable
           style={tailwind("p-5 flex-1")}
           onPress={() => navigation.navigate("incident", { post })}
@@ -44,24 +75,45 @@ export function PostSingleOverlay({
         >
           <Text style={{ color: "#fff", textAlign: "right" }}>Settings</Text>
         </Pressable>
-      </View>
-      <View
-        style={tailwind(
-          "flex-grow flex-1 flex-col-reverse justify-start items-end py-5"
-        )}
-      >
-        <Pressable style={tailwind("w-1/3 py-3")}>
-          <Text style={{ color: "#fff" }}>People affected{"\n"}200</Text>
-        </Pressable>
-        <Pressable style={tailwind("w-1/3 py-3")}>
-          <Text style={{ color: "#fff" }}>Category:{"\n"}Fire </Text>
-        </Pressable>
-        <Pressable style={tailwind("w-1/3 py-3")}>
-          <Text style={{ color: "#fff" }}>Views{"\n"}2.k</Text>
-        </Pressable>
-        <Pressable style={tailwind("w-1/3 py-3")}>
-          <Text style={{ color: "#fff" }}>Money Raised{"\n"}$2000</Text>
-        </Pressable>
+      </View> */}
+      {links && (
+        <View style={tailwind("flex-grow flex-1 justify-start items-end")}>
+          {links.map((link: any) => {
+            return <IconButton {...link} onPress={console.log} />;
+          })}
+        </View>
+      )}
+      <View style={tailwind("flex flex-row items-center justify-between p-5")}>
+        <Pressable
+          style={tailwind(
+            "p-5 rounded-full w-12 h-12 border-2 border-transparent bg-red-400 opacity-50"
+          )}
+        />
+        <Pressable
+          style={tailwind(
+            "p-5 rounded-full w-12 h-12 border-2 border-white bg-blue-400"
+          )}
+        />
+        <Pressable
+          style={tailwind(
+            "p-5 rounded-full w-12 h-12 border-2 border-transparent bg-green-400"
+          )}
+        />
+        <Pressable
+          style={tailwind(
+            "p-5 rounded-full w-12 h-12 border-2 border-transparent bg-yellow-400"
+          )}
+        />
+        <Pressable
+          style={tailwind(
+            "p-5 rounded-full w-12 h-12 border-2 border-transparent bg-purple-400"
+          )}
+        />
+        <Pressable
+          style={tailwind(
+            "p-5 rounded-full w-12 h-12 border-2 border-transparent bg-gray-700"
+          )}
+        />
       </View>
       <View
         style={tailwind(
