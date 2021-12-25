@@ -5,7 +5,6 @@ import { listPosts } from "../graphql/queries";
 import { useQuery } from "react-query";
 import VideoPlayer from "expo-video-player";
 import { PostSingle } from "../components/PostSingle";
-import { PostSingleOverlay } from "../components/PostSingleOverlay";
 
 export function Modal() {
   return (
@@ -21,7 +20,7 @@ interface FlatListItem {
   [key: string]: any;
 }
 
-export default function Feed() {
+export default function Feed({ navigation }: any) {
   const mediaRefs: any = React.useRef([]) as React.MutableRefObject<
     typeof VideoPlayer[]
   >;
@@ -64,6 +63,7 @@ export default function Feed() {
         <PostSingle
           post={post}
           ref={(PostSingleRef) => (mediaRefs.current[post.id] = PostSingleRef)}
+          navigation={navigation}
         />
       </View>
     );

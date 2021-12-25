@@ -2,7 +2,14 @@ import * as React from "react";
 import { Dimensions, Pressable, SafeAreaView, Text, View } from "react-native";
 import tailwind from "tailwind-rn";
 
-export function PostSingleOverlay({ post, stop, play, pause }: any) {
+export function PostSingleOverlay({
+  post,
+  stop,
+  play,
+  pause,
+  navigation,
+  showCommentModal,
+}: any) {
   return (
     <Pressable
       style={{
@@ -19,17 +26,23 @@ export function PostSingleOverlay({ post, stop, play, pause }: any) {
       onPressOut={() => play()}
     >
       <View style={tailwind("flex flex-row justify-between")}>
-        <Pressable style={tailwind("p-5 flex-1")}>
+        <Pressable
+          style={tailwind("p-5 flex-1")}
+          onPress={() => navigation.navigate("incident", { post })}
+        >
           <Text style={{ color: "#fff" }}>Location</Text>
         </Pressable>
         <Pressable
           style={tailwind("p-5 flex-1")}
-          onPressIn={() => console.log("XXXXXXXXX")}
+          onPress={() => navigation.navigate("order", { post })}
         >
           <Text style={{ color: "#fff" }}>Donate Now</Text>
         </Pressable>
-        <Pressable style={tailwind("p-5 flex-1")}>
-          <Text style={{ color: "#fff", textAlign: "right" }}>Create Post</Text>
+        <Pressable
+          style={tailwind("p-5 flex-1")}
+          onPress={() => navigation.navigate("settings", { post })}
+        >
+          <Text style={{ color: "#fff", textAlign: "right" }}>Settings</Text>
         </Pressable>
       </View>
       <View
@@ -58,11 +71,19 @@ export function PostSingleOverlay({ post, stop, play, pause }: any) {
         <Pressable style={tailwind("p-5 flex-1")}>
           <Text style={{ textAlign: "left", color: "#fff" }}>{post.title}</Text>
         </Pressable>
-        <Pressable style={tailwind("p-5 flex-1")}>
-          <Text style={{ textAlign: "center", color: "#fff" }}>Feed</Text>
+        <Pressable
+          style={tailwind("p-5 flex-1")}
+          onPress={() => navigation.navigate("createPost", { post })}
+        >
+          <Text style={{ textAlign: "center", color: "#fff" }}>
+            Create Post
+          </Text>
         </Pressable>
-        <Pressable style={tailwind("px-5 flex flex-row flex-1 justify-center")}>
-          <Text style={{ textAlign: "right", color: "#fff" }}>Settings</Text>
+        <Pressable
+          style={tailwind("px-5 flex flex-row flex-1 justify-center")}
+          onPress={() => showCommentModal()}
+        >
+          <Text style={{ textAlign: "right", color: "#fff" }}>Comment</Text>
         </Pressable>
       </View>
     </Pressable>
