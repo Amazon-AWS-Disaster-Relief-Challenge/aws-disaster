@@ -10,6 +10,7 @@ export const PostSingle = React.forwardRef(({ post }: any, parentRef) => {
     play,
     unload,
     stop,
+    pause,
   }));
 
   React.useEffect(() => {
@@ -48,6 +49,22 @@ export const PostSingle = React.forwardRef(({ post }: any, parentRef) => {
       console.log(e);
     }
   };
+  const pause = async () => {
+    if (ref.current == null) {
+      return;
+    }
+
+    // if video is already stopped return
+    const status = await ref.current.getStatusAsync();
+    if (!status?.isPlaying) {
+      return;
+    }
+    try {
+      await ref.current.pauseAsync();
+    } catch (e) {
+      console.log(e);
+    }
+  };
 
   const unload = async () => {
     if (ref.current == null) {
@@ -64,7 +81,7 @@ export const PostSingle = React.forwardRef(({ post }: any, parentRef) => {
 
   return (
     <>
-      <PostSingleOverlay post={post} stop={stop} play={play} />
+      <PostSingleOverlay post={post} stop={stop} play={play} pause={pause} />
       <Video
         ref={ref}
         style={{

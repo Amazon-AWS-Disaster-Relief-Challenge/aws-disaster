@@ -2,7 +2,7 @@ import * as React from "react";
 import { Dimensions, Pressable, SafeAreaView, Text, View } from "react-native";
 import tailwind from "tailwind-rn";
 
-export function PostSingleOverlay({ post, stop, play }: any) {
+export function PostSingleOverlay({ post, stop, play, pause }: any) {
   return (
     <Pressable
       style={{
@@ -15,15 +15,18 @@ export function PostSingleOverlay({ post, stop, play }: any) {
         bottom: 0,
       }}
       // onPress={onPressFunction}
-      onPressIn={() => stop()}
+      onPressIn={() => pause()}
       onPressOut={() => play()}
     >
       <View style={tailwind("flex flex-row justify-between")}>
         <Pressable style={tailwind("p-5 flex-1")}>
           <Text style={{ color: "#fff" }}>Location</Text>
         </Pressable>
-        <Pressable style={tailwind("p-5 flex-1")}>
-          <Text style={{ color: "#fff" }}> Donate Now</Text>
+        <Pressable
+          style={tailwind("p-5 flex-1")}
+          onPressIn={() => console.log("XXXXXXXXX")}
+        >
+          <Text style={{ color: "#fff" }}>Donate Now</Text>
         </Pressable>
         <Pressable style={tailwind("p-5 flex-1")}>
           <Text style={{ color: "#fff", textAlign: "right" }}>Create Post</Text>
