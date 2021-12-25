@@ -5038,6 +5038,11 @@ core-js-compat@^3.18.0, core-js-compat@^3.19.1:
     browserslist "^4.19.1"
     semver "7.0.0"
 
+core-js@2:
+  version "2.6.12"
+  resolved "https://registry.yarnpkg.com/core-js/-/core-js-2.6.12.tgz#d9333dfa7b065e347cc5682219d6f690859cc2ec"
+  integrity sha512-Kb2wC0fvsWfQrgk8HU5lW6U/Lcs8+9aaYcy4ZFc6DDlo4nZ7n70dEgE5rtR0oG6ufKDUnrwfWL1mXR5ljDatrQ==
+
 core-js@^1.0.0:
   version "1.2.7"
   resolved "https://registry.yarnpkg.com/core-js/-/core-js-1.2.7.tgz#652294c14651db28fa93bd2d5ff2983a4f08c636"
@@ -8570,6 +8575,13 @@ react-native-maps@0.30.0:
   integrity sha512-wJs5E5+IVJiImx6fTAfuYFZ7WQ190NVW3JEzJjZrLTkEjIkVq1pDnkRhkn7GC22Ks/ofYmdXzfnTqga1+XOhog==
   dependencies:
     "@types/geojson" "^7946.0.7"
+
+react-native-reanimated-slider@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-reanimated-slider/-/react-native-reanimated-slider-2.0.0.tgz#bbdfadc1a4cea3ac26134f0f0b944a8f625e6685"
+  integrity sha512-k2gbXKnfeV3k2cvkadqotDyRP96Z5ET16xA4tzUt15OmFDoYOuM0DaKn4hwHmbOwHDSTVmeUZRFJSkpcUQTblA==
+  dependencies:
+    core-js "2"
 
 react-native-reanimated@~2.3.1:
   version "2.3.1"
