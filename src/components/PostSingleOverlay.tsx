@@ -2,19 +2,21 @@ import * as React from "react";
 import { Dimensions, Pressable, SafeAreaView, Text, View } from "react-native";
 import tailwind from "tailwind-rn";
 
-export function PostSingleOverlay({ post }: any) {
+export function PostSingleOverlay({ post, stop, play }: any) {
   return (
-    <View
+    <Pressable
       style={{
         width: Dimensions.get("window").width,
         position: "absolute",
         top: 64,
-
         zIndex: 999,
         flex: 1,
         flexDirection: "column",
         bottom: 0,
       }}
+      // onPress={onPressFunction}
+      onPressIn={() => stop()}
+      onPressOut={() => play()}
     >
       <View style={tailwind("flex flex-row justify-between")}>
         <Pressable style={tailwind("p-5 flex-1")}>
@@ -60,6 +62,6 @@ export function PostSingleOverlay({ post }: any) {
           <Text style={{ textAlign: "right", color: "#fff" }}>Settings</Text>
         </Pressable>
       </View>
-    </View>
+    </Pressable>
   );
 }

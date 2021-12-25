@@ -64,7 +64,7 @@ export const PostSingle = React.forwardRef(({ post }: any, parentRef) => {
 
   return (
     <>
-      <PostSingleOverlay post={post} />
+      <PostSingleOverlay post={post} stop={stop} play={play} />
       <Video
         ref={ref}
         style={{
