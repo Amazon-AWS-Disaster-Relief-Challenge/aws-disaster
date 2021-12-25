@@ -1,8 +1,7 @@
 import * as React from "react";
-import { Dimensions, Pressable, SafeAreaView, Text, View } from "react-native";
+import { Dimensions, Pressable, Text, View } from "react-native";
 import tailwind from "tailwind-rn";
 import * as icons from "@expo/vector-icons";
-import { color } from "react-native-reanimated";
 
 const links = [
   {
@@ -22,6 +21,7 @@ const links = [
     iconLib: "MaterialIcons",
   },
 ];
+
 export function IconButton({ icon, iconLib, size, ...props }: any) {
   const Icon: any = icons[iconLib || "Feather"];
   return (
@@ -33,6 +33,7 @@ export function IconButton({ icon, iconLib, size, ...props }: any) {
     </Pressable>
   );
 }
+
 export function PostSingleOverlay({
   post,
   stop,
@@ -42,6 +43,7 @@ export function PostSingleOverlay({
   showCommentModal,
 }: any) {
   const PlayIcon: any = icons["MaterialCommunityIcons"];
+
   return (
     <Pressable
       style={{
@@ -90,8 +92,45 @@ export function PostSingleOverlay({
         )}
       >
         <Pressable style={tailwind("rounded-full m-0 p-0")}>
-          <PlayIcon size="40" name="play-circle" color="white" />
+          <PlayIcon size="32" name="play-circle" color="white" />
         </Pressable>
+
+        <View style={tailwind("ml-2 flex-1 flex")}>
+          <View style={{ height: 3 }}>
+            <View
+              style={tailwind("flex-1 flex flex-row bg-black bg-opacity-50")}
+            >
+              <View
+                style={{
+                  backgroundColor: "rgba(255,255,255,.4)",
+                  height: 3,
+                  width: 200,
+                }}
+              />
+              <View
+                style={{
+                  backgroundColor: "white",
+                  height: 3,
+                  width: 130,
+                  position: "absolute",
+                }}
+              />
+            </View>
+          </View>
+          <View style={tailwind("absolute top-100 right-0")}>
+            <Text style={tailwind("py-1 text-white")}>
+              <Text
+                style={{
+                  fontSize: 10,
+                  fontWeight: "bold",
+                  letterSpacing: -0.5,
+                }}
+              >
+                -02.32
+              </Text>
+            </Text>
+          </View>
+        </View>
       </View>
       <View style={tailwind("flex flex-row items-center justify-between p-5")}>
         <Pressable
