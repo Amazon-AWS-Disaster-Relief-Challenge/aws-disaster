@@ -70,7 +70,7 @@ export const PostSingle = React.forwardRef(({ post }: any, parentRef) => {
         style={{
           flex: 1,
         }}
-        shouldPlay={true}
+        shouldPlay={false}
         isLooping
         resizeMode={Video.RESIZE_MODE_COVER}
         // usePoster
