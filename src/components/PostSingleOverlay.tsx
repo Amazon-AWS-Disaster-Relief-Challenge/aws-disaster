@@ -1,8 +1,8 @@
 import * as React from "react";
-import { Dimensions, Pressable, Text, View } from "react-native";
+import { Button, Dimensions, Pressable, Text, View } from "react-native";
 import tailwind from "tailwind-rn";
 import * as icons from "@expo/vector-icons";
-
+import RBSheet from "react-native-raw-bottom-sheet";
 const links = [
   {
     id: "close",
@@ -43,7 +43,7 @@ export function PostSingleOverlay({
   showCommentModal,
 }: any) {
   const PlayIcon: any = icons["MaterialCommunityIcons"];
-
+  const refRBSheet = React.useRef();
   return (
     <Pressable
       style={{
@@ -55,30 +55,9 @@ export function PostSingleOverlay({
         flexDirection: "column",
         bottom: 0,
       }}
-      // onPress={onPressFunction}
-      onPressIn={() => pause()}
-      onPressOut={() => play()}
+      // onPressIn={() => pause()}
+      // onPressOut={() => play()}
     >
-      {/* <View style={tailwind("flex flex-row justify-between")}>
-        <Pressable
-          style={tailwind("p-5 flex-1")}
-          onPress={() => navigation.navigate("incident", { post })}
-        >
-          <Text style={{ color: "#fff" }}>Location</Text>
-        </Pressable>
-        <Pressable
-          style={tailwind("p-5 flex-1")}
-          onPress={() => navigation.navigate("order", { post })}
-        >
-          <Text style={{ color: "#fff" }}>Donate Now</Text>
-        </Pressable>
-        <Pressable
-          style={tailwind("p-5 flex-1")}
-          onPress={() => navigation.navigate("settings", { post })}
-        >
-          <Text style={{ color: "#fff", textAlign: "right" }}>Settings</Text>
-        </Pressable>
-      </View> */}
       {links && (
         <View style={tailwind("flex-grow flex-1 justify-start items-end")}>
           {links.map((link: any) => {
@@ -187,6 +166,25 @@ export function PostSingleOverlay({
           <Text style={{ textAlign: "right", color: "#fff" }}>Comment</Text>
         </Pressable>
       </View>
+      <Button
+        title="OPEN BOTTOM SHEET"
+        onPress={() => refRBSheet.current.open()}
+      />
+      <RBSheet
+        ref={refRBSheet}
+        closeOnDragDown={true}
+        closeOnPressMask={false}
+        customStyles={{
+          wrapper: {
+            backgroundColor: "transparent",
+          },
+          draggableIcon: {
+            backgroundColor: "#000",
+          },
+        }}
+      >
+        <Text>Hello</Text>
+      </RBSheet>
     </Pressable>
   );
 }
