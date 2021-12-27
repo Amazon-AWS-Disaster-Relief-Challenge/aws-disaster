@@ -1,8 +1,8 @@
 import * as React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Storage } from 'aws-amplify';
-import { Button, View, Text, Platform } from "react-native";
-import { DocumentPickerResponse, pick, types, isCancel } from 'react-native-document-picker';
+import { Button, View, Text, Platform, StyleSheet, TouchableOpacity } from "react-native";
+import { Camera } from 'expo-camera';
 import { Video } from "expo-av";
 import VideoPlayer from "expo-video-player";
 
@@ -12,27 +12,25 @@ export default function UploadVideo({ navigation }: ScreenProps) {
   const [videoCharacteristics, setVideoCharacteristics] = useState("");
   const [status, setStatus] = useState("");
   const [s3Url, setS3Url] = useState("");
-  const pickFileFromDevice = () => {
-        const { audio, video, images } = types;
-        // Pick a single file
-        pick({
-            type: [images, audio, video],
-        })
-        .then(res => {
-            console.log(res)
-            setName(res[0].name);
-            setVideoCharacteristics(`${res[0].uri}, ${res[0].type}, ${res[0].name}, ${res[0].size}`);
-            uploadToS3(res[0]);
-        })
-        .catch(err => {
-            if (isCancel(err)) {
-                // User cancelled the picker, exit any dialogs or menus and move on
-            } else {
-                throw err
-            }
-        });
-  };
-  const uploadToS3 = (file: DocumentPickerResponse) => {
+  const [hasPermission, setHasPermission] = useState(false);
+  const [type, setType] = useState(Camera.Constants.Type.back);
+
+  useEffect(() => {
+    (async () => {
+      const cameraStatus = await Camera.requestCameraPermissionsAsync();
+      const microphoneStatus = await Camera.requestMicrophonePermissionsAsync();
+      setHasPermission(cameraStatus.status === 'granted' && microphoneStatus.status === 'granted');
+    })();
+  }, []);
+
+  if (hasPermission === null) {
+    return <View />;
+  }
+  if (hasPermission === false) {
+    return <Text>No access to camera</Text>;
+  }
+  
+  const uploadToS3 = (file: any) => {
     Storage.put(name, file, {
         /* level: 'protected', */
         contentType: file.type ?? "",
@@ -54,7 +52,23 @@ export default function UploadVideo({ navigation }: ScreenProps) {
       <Text>{ status }</Text>
       {
           (platform == "ios" || platform == "android") && 
-          <Button title="Pick file" onPress={() => pickFileFromDevice()} />
+          <View style={styles.container}>
+            <Camera style={styles.camera} type={type}>
+                <View style={styles.buttonContainer}>
+                <TouchableOpacity
+                    style={styles.button}
+                    onPress={() => {
+                    setType(
+                        type === Camera.Constants.Type.back
+                        ? Camera.Constants.Type.front
+                        : Camera.Constants.Type.back
+                    );
+                    }}>
+                    <Text style={styles.text}> Flip </Text>
+                </TouchableOpacity>
+                </View>
+            </Camera>
+          </View>
       }
       {
         !!s3Url &&
@@ -72,3 +86,27 @@ export default function UploadVideo({ navigation }: ScreenProps) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+    container: {
+      flex: 1,
+    },
+    camera: {
+      flex: 1,
+    },
+    buttonContainer: {
+      flex: 1,
+      backgroundColor: 'transparent',
+      flexDirection: 'row',
+      margin: 20,
+    },
+    button: {
+      flex: 0.1,
+      alignSelf: 'flex-end',
+      alignItems: 'center',
+    },
+    text: {
+      fontSize: 18,
+      color: 'white',
+    },
+  });

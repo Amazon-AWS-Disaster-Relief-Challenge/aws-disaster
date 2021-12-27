@@ -2,6 +2,7 @@ import * as React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Feed from "../screens/Feed";
 import createPost from "../screens/createPost";
+import uploadVideo from "../screens/UploadVideo";
 import Map from "../screens/Map";
 import { Feather } from "@expo/vector-icons";
 export const Tab = createBottomTabNavigator();
@@ -37,6 +38,15 @@ export default function MainRoute() {
         options={{
           tabBarIcon: ({ color }) => (
             <Feather name="plus-square" size={24} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="uploadVideo"
+        component={uploadVideo}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <Feather name="camera" size={24} color={color} />
           ),
         }}
       />

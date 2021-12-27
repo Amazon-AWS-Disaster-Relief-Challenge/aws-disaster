@@ -57,6 +57,11 @@ export default function NewPost() {
 
       <Button
         style={tailwind("w-full p-5 text-3xl border")}
+        title="Upload Video"
+        onPress={() => navigation.navigate("Home")}
+      />
+      <Button
+        style={tailwind("w-full p-5 text-3xl border")}
         title="Submit"
         onPress={handleSubmit(onSubmit)}
       />

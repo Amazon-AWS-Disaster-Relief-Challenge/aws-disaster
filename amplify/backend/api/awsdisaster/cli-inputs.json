@@ -3,7 +3,7 @@
   "serviceConfiguration": {
     "apiName": "awsdisaster",
     "serviceName": "AppSync",
-    "gqlSchemaPath": "/tmp/amplify-552718b8-9f55-4d3f-99f0-558d50c41a38/amplify/backend/api/awsdisaster/schema.graphql",
+    "gqlSchemaPath": "/tmp/amplify-027febad-289a-4637-ba36-b76cf2ecf111/amplify/backend/api/awsdisaster/schema.graphql",
     "defaultAuthType": {
       "mode": "API_KEY",
       "keyDescription": "api key description",

@@ -246,6 +246,20 @@ export const schema = {
                         "associatedWith": "post"
                     }
                 },
+                "Comments": {
+                    "name": "Comments",
+                    "isArray": true,
+                    "type": {
+                        "model": "Comment"
+                    },
+                    "isRequired": false,
+                    "attributes": [],
+                    "isArrayNullable": true,
+                    "association": {
+                        "connectionType": "HAS_MANY",
+                        "associatedWith": "postID"
+                    }
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -305,6 +319,13 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "postID": {
+                    "name": "postID",
+                    "isArray": false,
+                    "type": "ID",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -328,6 +349,15 @@ export const schema = {
                 {
                     "type": "model",
                     "properties": {}
+                },
+                {
+                    "type": "key",
+                    "properties": {
+                        "name": "byPost",
+                        "fields": [
+                            "postID"
+                        ]
+                    }
                 },
                 {
                     "type": "auth",
@@ -440,5 +470,5 @@ export const schema = {
         }
     },
     "nonModels": {},
-    "version": "79a8cbe622bbef3226a1136c4251678a"
+    "version": "d227c194d4e847869a892205b40e14eb"
 };

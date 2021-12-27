@@ -76,6 +76,7 @@ export declare class Post {
   readonly email?: string;
   readonly username?: string;
   readonly incidenttagss?: (IncidentTagsPost | null)[];
+  readonly Comments?: (Comment | null)[];
   readonly createdAt?: string;
   readonly updatedAt?: string;
   constructor(init: ModelInit<Post, PostMetaData>);
@@ -85,6 +86,7 @@ export declare class Post {
 export declare class Comment {
   readonly id: string;
   readonly text?: string;
+  readonly postID?: string;
   readonly createdAt?: string;
   readonly updatedAt?: string;
   constructor(init: ModelInit<Comment, CommentMetaData>);
