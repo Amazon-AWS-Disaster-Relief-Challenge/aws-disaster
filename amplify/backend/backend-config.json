@@ -1,6 +1,6 @@
 {
   "auth": {
-    "awsdisaster": {
+    "awsdisaster4ddd7f5c": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
@@ -8,19 +8,15 @@
       "frontendAuthConfig": {
         "socialProviders": [],
         "usernameAttributes": [
-          "EMAIL"
+          "EMAIL",
+          "PHONE_NUMBER"
         ],
         "signupAttributes": [
           "EMAIL"
         ],
         "passwordProtectionSettings": {
           "passwordPolicyMinLength": 8,
-          "passwordPolicyCharacters": [
-            "REQUIRES_LOWERCASE",
-            "REQUIRES_NUMBERS",
-            "REQUIRES_SYMBOLS",
-            "REQUIRES_UPPERCASE"
-          ]
+          "passwordPolicyCharacters": []
         },
         "mfaConfiguration": "OFF",
         "mfaTypes": [
@@ -32,10 +28,11 @@
       }
     }
   },
-  "api": {
-    "awsdisaster": {
-      "service": "AppSync",
+  "function": {
+    "S3Trigger1bd2454f": {
+      "service": "Lambda",
       "providerPlugin": "awscloudformation",
+<<<<<<< HEAD
       "output": {
         "authConfig": {
           "defaultAuthentication": {
@@ -58,6 +55,16 @@
           ]
         }
       }
+=======
+      "build": true
+    }
+  },
+  "storage": {
+    "AwsHackContentStorage": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": []
+>>>>>>> main
     }
   },
   "storage": {
