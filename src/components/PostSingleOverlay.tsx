@@ -26,7 +26,7 @@ export function IconButton({ icon, iconLib, size, ...props }: any) {
   const Icon: any = icons[iconLib || "Feather"];
   return (
     <Pressable
-      style={tailwind("p-2 mr-5 my-2 rounded-full bg-white bg-opacity-20")}
+      style={tailwind("p-2 my-2 mx-3 rounded-full bg-white bg-opacity-20")}
       {...props}
     >
       <Icon name={icon} size={26} color="black" />
@@ -67,11 +67,11 @@ export function PostSingleOverlay({
       )}
       <View
         style={tailwind(
-          "flex flex-row items-center justify-between px-5 mr-5 ml-2"
+          "flex flex-row items-center justify-between px-5 -mx-1"
         )}
       >
         <Pressable style={tailwind("rounded-full m-0 p-0")}>
-          <PlayIcon size="32" name="pause-circle" color="white" />
+          <PlayIcon size="32" name="play-circle" color="white" />
         </Pressable>
 
         <View style={tailwind("ml-2 flex-1 flex")}>
@@ -96,7 +96,7 @@ export function PostSingleOverlay({
               />
             </View>
           </View>
-          <View style={tailwind("absolute right-0")}>
+          <View style={tailwind("absolute top-0 right-0")}>
             <Text style={tailwind("py-1 text-white")}>
               <Text
                 style={{
@@ -111,7 +111,7 @@ export function PostSingleOverlay({
           </View>
         </View>
       </View>
-      <View style={tailwind("flex flex-row items-center justify-between m-5")}>
+      <View style={tailwind("flex flex-row items-center justify-between p-5")}>
         <Pressable
           style={tailwind(
             "p-5 rounded-full w-12 h-12 border-2 border-transparent bg-red-400 opacity-50"
@@ -166,7 +166,7 @@ export function PostSingleOverlay({
           <Text style={{ textAlign: "right", color: "#fff" }}>Comment</Text>
         </Pressable>
       </View>
-      {/* <Button
+      <Button
         title="OPEN BOTTOM SHEET"
         onPress={() => refRBSheet.current.open()}
       />
@@ -184,7 +184,7 @@ export function PostSingleOverlay({
         }}
       >
         <Text>Hello</Text>
-      </RBSheet> */}
+      </RBSheet>
     </Pressable>
   );
 }
