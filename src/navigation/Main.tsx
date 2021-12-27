@@ -33,6 +33,24 @@ export default function MainRoute() {
         }}
       />
       <Tab.Screen
+        name="order"
+        component={Map}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <Feather name="search" size={24} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="comment"
+        component={createPost}
+        options={{
+          tabBarIcon: ({ color }) => (
+            <Feather name="search" size={24} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
         name="createPost"
         component={createPost}
         options={{
