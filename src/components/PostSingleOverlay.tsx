@@ -53,12 +53,12 @@ export function PostSingleOverlay({ post }: any) {
         <Pressable style={tailwind("p-5 flex-1")}>
           <Text style={{ textAlign: "left", color: "#fff" }}>{post.title}</Text>
         </Pressable>
-        <Pressable style={tailwind("p-5 flex-1")}>
+        {/* <Pressable style={tailwind("p-5 flex-1")}>
           <Text style={{ textAlign: "center", color: "#fff" }}>Feed</Text>
         </Pressable>
         <Pressable style={tailwind("px-5 flex flex-row flex-1 justify-center")}>
           <Text style={{ textAlign: "right", color: "#fff" }}>Settings</Text>
-        </Pressable>
+        </Pressable> */}
       </View>
     </View>
   );

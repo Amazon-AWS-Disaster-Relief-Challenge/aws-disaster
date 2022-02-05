@@ -20,19 +20,38 @@ interface FlatListItem {
   media: string[];
   [key: string]: any;
 }
-
+const data: any = [
+  {
+    id: "3",
+    title: "Flood",
+    videoUrl:
+      "https://res.cloudinary.com/amplestream/video/upload/v1644093611/Fake_Videos-4K_copy_t9zcas.mp4",
+  },
+  {
+    id: "2",
+    title: "Fire",
+    videoUrl:
+      "https://res.cloudinary.com/amplestream/video/upload/v1644093605/Fake_Videos-4K_copy_2_nyl1jf.mp4",
+  },
+  {
+    id: "1",
+    title: "Tornado",
+    videoUrl:
+      "https://res.cloudinary.com/amplestream/video/upload/v1644093610/Fake_Videos-4K_avv5aa.mp4",
+  },
+];
 export default function Feed() {
   const mediaRefs: any = React.useRef([]) as React.MutableRefObject<
     typeof VideoPlayer[]
   >;
 
-  const { data } = useQuery<any>("posts", async () =>
-    API.graphql(
-      graphqlOperation(listPosts, {
-        limit: 4,
-      })
-    )
-  );
+  // const { data } = useQuery<any>("posts", async () =>
+  //   API.graphql(
+  //     graphqlOperation(listPosts, {
+  //       limit: 4,
+  //     })
+  //   )
+  // );
 
   const onViewableItemsChanged = React.useRef(({ changed }: any) => {
     changed.forEach((element: any) => {
@@ -74,7 +93,7 @@ export default function Feed() {
       {data && (
         <FlatList
           windowSize={4}
-          data={data.data.listPosts.items}
+          data={data}
           renderItem={renderItem}
           keyExtractor={(item: FlatListItem) => item.id}
           decelerationRate="fast"

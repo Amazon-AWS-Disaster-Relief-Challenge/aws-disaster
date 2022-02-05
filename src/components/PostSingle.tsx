@@ -78,7 +78,7 @@ export const PostSingle = React.forwardRef(({ post }: any, parentRef) => {
         // posterStyle={{ resizeMode: "cover", height: "100%" }}
         // source={{ uri: item.media[0] }}
         source={{
-          uri: "http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4",
+          uri: post.videoUrl,
         }}
       />
     </>

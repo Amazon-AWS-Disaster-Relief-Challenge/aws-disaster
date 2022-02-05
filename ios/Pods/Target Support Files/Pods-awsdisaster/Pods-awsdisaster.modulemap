@@ -1,0 +1,6 @@
+module Pods_awsdisaster {
+  umbrella header "Pods-awsdisaster-umbrella.h"
+
+  export *
+  module * { export * }
+}
